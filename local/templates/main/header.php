@@ -1,22 +1,28 @@
 <?php
-if (!define('B_PROLOG-INCLUDED') || B_PROLOG_INCLUDED !== true) die();
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
+
+use Bitrix\Main\Page\Asset;
+
+$asset = Asset::getInstance();
+$asset->addCss(SITE_TEMPLATE_PATH . '/css/main.css');
+$asset->addJs(SITE_TEMPLATE_PATH . '/js/main.js');
 ?>
 <!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>document</title>
+    <title><? $APPLICATION->ShowTitle(); ?></title>
+    <? $APPLICATION->ShowHead(); ?>
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.webmanifest">
-    <link rel="stylesheet" href="/main.css">
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule="" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="/main.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" defer></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+            defer></script> <? $isIndex = $APPLICATION->GetCurPage() == SITE_DIR; ?>
 </head>
 <body>
+<div id="panel"><? $APPLICATION->ShowPanel(); ?></div>
 <header class="header">
     <div class="container">
         <div class="header__content">
