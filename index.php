@@ -1,5 +1,5 @@
 <?php
-require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
+require($_SERVER[ "DOCUMENT_ROOT" ] . "/bitrix/header.php");
 $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
 $APPLICATION->SetPageProperty("keywords", "Услуги, Услуга. Заказать");
 $APPLICATION->SetPageProperty("description", "Услуги.ru - сервис заказа услуг");
@@ -10,9 +10,8 @@ $APPLICATION->SetTitle("Услуги.ru");
             <div class="container">
                 <div class="section__wrapper">
                     <div class="section__heading">
-                        <h1 class="section__title">Для любой задачи есть специалист
-                            <p class="section__subtitle">Поможем найти надежного исполнителя для любых задач.</p>
-                        </h1>
+                        <h1 class="section__title">Для любой задачи есть специалист</h1>
+                        <p class="section__subtitle">Поможем найти надежного исполнителя для любых задач.</p>
                     </div>
                     <div class="section__content">
                         <form method="post" action="" class="search-form">
@@ -326,4 +325,4 @@ $APPLICATION->SetTitle("Услуги.ru");
         </section>
     </main>
 
-<? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
+<? require($_SERVER[ "DOCUMENT_ROOT" ] . "/bitrix/footer.php"); ?>
