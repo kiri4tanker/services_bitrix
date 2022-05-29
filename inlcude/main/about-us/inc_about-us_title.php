@@ -1,0 +1,1 @@
+<h2 class="section__title">О сервисе</h2>

@@ -1,17 +1,34 @@
 <?php
 require($_SERVER[ "DOCUMENT_ROOT" ] . "/bitrix/header.php");
-$APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
-$APPLICATION->SetPageProperty("keywords", "Услуги, Услуга. Заказать");
-$APPLICATION->SetPageProperty("description", "Услуги.ru - сервис заказа услуг");
-$APPLICATION->SetTitle("Услуги.ru");
+$APPLICATION->SetPageProperty("keywords", "Услуги, Услуга. Заказать, Каталог");
+$APPLICATION->SetPageProperty("description", "Каталог услуг сервиса Услуги.ruг");
+$APPLICATION->SetTitle("Каталог");
 ?>
     <main class="main">
         <section id="section-search" class="section section_secondary section_background">
             <div class="container">
                 <div class="section__wrapper">
                     <div class="section__heading">
-                        <h1 class="section__title">Для любой задачи есть специалист</h1>
-                        <p class="section__subtitle">Поможем найти надежного исполнителя для любых задач.</p>
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            array(
+                                "AREA_FILE_SHOW" => "file",
+                                "AREA_FILE_SUFFIX" => "inc",
+                                "EDIT_TEMPLATE" => "",
+                                "PATH" => "/include/main/search/inc_search_title.php"
+                            )
+                        ); ?>
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            array(
+                                "AREA_FILE_SHOW" => "file",
+                                "AREA_FILE_SUFFIX" => "inc",
+                                "EDIT_TEMPLATE" => "",
+                                "PATH" => "/include/main/search/inc_search_subtitle.php"
+                            )
+                        ); ?>
                     </div>
                     <div class="section__content">
                         <form method="post" action="" class="search-form">
@@ -28,8 +45,26 @@ $APPLICATION->SetTitle("Услуги.ru");
             <div class="container">
                 <div class="section__wrapper">
                     <div class="section__heading">
-                        <h2 class="section__title">Наши услуги</h2>
-                        <a href="services.html" class="btn">Посмотреть все</a>
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            array(
+                                "AREA_FILE_SHOW" => "file",
+                                "AREA_FILE_SUFFIX" => "inc",
+                                "EDIT_TEMPLATE" => "",
+                                "PATH" => "/include/main/services/inc_services_title.php"
+                            )
+                        ); ?>
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            array(
+                                "AREA_FILE_SHOW" => "file",
+                                "AREA_FILE_SUFFIX" => "inc",
+                                "EDIT_TEMPLATE" => "",
+                                "PATH" => "/include/main/services/inc_services_subtitle.php"
+                            )
+                        ); ?>
                     </div>
                     <div class="section__content">
                         <div class="services">
@@ -98,24 +133,52 @@ $APPLICATION->SetTitle("Услуги.ru");
             <div class="container">
                 <div class="section__wrapper">
                     <div class="section__heading">
-                        <h2 class="section__title">О сервисе</h2>
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            array(
+                                "AREA_FILE_SHOW" => "file",
+                                "AREA_FILE_SUFFIX" => "inc",
+                                "EDIT_TEMPLATE" => "",
+                                "PATH" => "/include/main/about-us/inc_about-us_title.php"
+                            )
+                        ); ?>
                     </div>
                     <div class="section__content">
                         <div class="about-us">
                             <div class="about-us__content">
-                                <p class="about-us__text">Услуги.ру — это сервис, который помогает клиентам и
-                                    специалистам
-                                    встретиться. Клиенты находят здесь профессионалов для решения любых задач —
-                                    репетиторов,
-                                    автоинструкторов, сантехников, парикмахеров.<br>А специалисты, в свою очередь,
-                                    быстро находят
-                                    клиентов, ведь с помощью сайта можно в один клик организовать свой бизнес на дому
-                                    без
-                                    вложений.</p>
-                                <a href="about-us.html" class="btn">Читать далее</a>
+                                <? $APPLICATION->IncludeComponent(
+                                    "bitrix:main.include",
+                                    "",
+                                    array(
+                                        "AREA_FILE_SHOW" => "file",
+                                        "AREA_FILE_SUFFIX" => "inc",
+                                        "EDIT_TEMPLATE" => "",
+                                        "PATH" => "/include/main/about-us/inc_about-us_subtitle.php"
+                                    )
+                                ); ?>
+                                <? $APPLICATION->IncludeComponent(
+                                    "bitrix:main.include",
+                                    "",
+                                    array(
+                                        "AREA_FILE_SHOW" => "file",
+                                        "AREA_FILE_SUFFIX" => "inc",
+                                        "EDIT_TEMPLATE" => "",
+                                        "PATH" => "/include/main/about-us/inc_about-us_btn.php"
+                                    )
+                                ); ?>
                             </div>
                             <div class="about-us__img">
-                                <img src="/images/about-us.png?a14381182c5ab45547e8239b419f8218" alt="about-us-img">
+                                <? $APPLICATION->IncludeComponent(
+                                    "bitrix:main.include",
+                                    "",
+                                    array(
+                                        "AREA_FILE_SHOW" => "file",
+                                        "AREA_FILE_SUFFIX" => "inc",
+                                        "EDIT_TEMPLATE" => "",
+                                        "PATH" => "/include/main/about-us/inc_about-us_img.php"
+                                    )
+                                ); ?>
                             </div>
                         </div>
                     </div>
@@ -126,8 +189,26 @@ $APPLICATION->SetTitle("Услуги.ru");
             <div class="container">
                 <div class="section__wrapper">
                     <div class="section__heading">
-                        <h2 class="section__title">Наша статистика</h2>
-                        <p class="section__subtitle">За время работы с заказчиками и исполнителями</p>
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            array(
+                                "AREA_FILE_SHOW" => "file",
+                                "AREA_FILE_SUFFIX" => "inc",
+                                "EDIT_TEMPLATE" => "",
+                                "PATH" => "/include/main/stats/inc_stats_title.php"
+                            )
+                        ); ?>
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            array(
+                                "AREA_FILE_SHOW" => "file",
+                                "AREA_FILE_SUFFIX" => "inc",
+                                "EDIT_TEMPLATE" => "",
+                                "PATH" => "/include/main/stats/inc_stats_subtitle.php"
+                            )
+                        ); ?>
                     </div>
                     <div class="section__content">
                         <div class="stats">
@@ -156,7 +237,16 @@ $APPLICATION->SetTitle("Услуги.ru");
             <div class="container">
                 <div class="section__wrapper">
                     <div class="section__heading">
-                        <h2 class="section__title">Причины выбрать нас</h2>
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            array(
+                                "AREA_FILE_SHOW" => "file",
+                                "AREA_FILE_SUFFIX" => "inc",
+                                "EDIT_TEMPLATE" => "",
+                                "PATH" => "/include/main/benefits/inc_benefits_title.php"
+                            )
+                        ); ?>
                     </div>
                 </div>
                 <div class="section__content">
@@ -211,8 +301,26 @@ $APPLICATION->SetTitle("Услуги.ru");
             <div class="container">
                 <div class="section__wrapper">
                     <div class="section__heading">
-                        <h2 class="section__title">Популярные услуги</h2>
-                        <a href="services.html" class="btn">Посмотреть все</a>
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            array(
+                                "AREA_FILE_SHOW" => "file",
+                                "AREA_FILE_SUFFIX" => "inc",
+                                "EDIT_TEMPLATE" => "",
+                                "PATH" => "/include/main/popular_services/inc_popular_services_title.php"
+                            )
+                        ); ?>
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            array(
+                                "AREA_FILE_SHOW" => "file",
+                                "AREA_FILE_SUFFIX" => "inc",
+                                "EDIT_TEMPLATE" => "",
+                                "PATH" => "/include/main/popular_services/inc_popular_services_btn.php"
+                            )
+                        ); ?>
                     </div>
                     <div class="section__content">
 
@@ -282,20 +390,45 @@ $APPLICATION->SetTitle("Услуги.ru");
             <div class="container">
                 <div class="section__wrapper">
                     <div class="section__heading">
-                        <h2 class="section__title">Мы здесь, чтобы помочь</h2>
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            array(
+                                "AREA_FILE_SHOW" => "file",
+                                "AREA_FILE_SUFFIX" => "inc",
+                                "EDIT_TEMPLATE" => "",
+                                "PATH" => "/include/feedback/inc_feedback_title.php"
+                            )
+                        ); ?>
                     </div>
                     <div class="section__content">
                         <div class="feedback">
-                            <img src="/images/feedback.png?dfa60ac6960a221c7c050a5a95d024b0" alt=""
-                                 class="feedback__img">
-
+                            <? $APPLICATION->IncludeComponent(
+                                "bitrix:main.include",
+                                "",
+                                array(
+                                    "AREA_FILE_SHOW" => "file",
+                                    "AREA_FILE_SUFFIX" => "inc",
+                                    "EDIT_TEMPLATE" => "",
+                                    "PATH" => "/include/feedback/inc_feedback_img.php"
+                                )
+                            ); ?>
                             <form method="post" action="" class="feedback-form">
                                 <input name="name" class="input" placeholder="Имя">
                                 <input name="company" class="input" placeholder="Ваша компания">
                                 <input name="theme" class="input" placeholder="Тема">
                                 <input name="email" class="input" placeholder="Email" type="email">
                                 <textarea name="comment" placeholder="Сообщение" class="input"></textarea>
-                                <button class="btn">Отправить</button>
+                                <? $APPLICATION->IncludeComponent(
+                                    "bitrix:main.include",
+                                    "",
+                                    array(
+                                        "AREA_FILE_SHOW" => "file",
+                                        "AREA_FILE_SUFFIX" => "inc",
+                                        "EDIT_TEMPLATE" => "",
+                                        "PATH" => "/include/feedback/inc_feedback_btn.php"
+                                    )
+                                ); ?>
                             </form>
                         </div>
                     </div>
@@ -306,19 +439,38 @@ $APPLICATION->SetTitle("Услуги.ru");
             <div class="container">
                 <div class="section__wrapper">
                     <div class="section__heading">
-                        <h2 class="section__title">Где используют наш сервис</h2>
-                        <p class="section__subtitle">Наш сервис используют по всей России, Вы можете найти нужного вам
-                            специалиста в любом городе. На данной странице вы узнаете, где найти хорошего специалиста в
-                            вашем
-                            городе, его контакты и расценки.
-                            Мы помогаем найти специалиста в городе и найти ему замену в случае необходимости.
-                            Срочный вызов специалиста на дом – это отличная возможность быстро решить возникшую проблему
-                            и не
-                            ожидать долгие часы, когда приедет ремонтная бригада.</p>
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            array(
+                                "AREA_FILE_SHOW" => "file",
+                                "AREA_FILE_SUFFIX" => "inc",
+                                "EDIT_TEMPLATE" => "",
+                                "PATH" => "/include/main/map/inc_map_title.php"
+                            )
+                        ); ?>
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            array(
+                                "AREA_FILE_SHOW" => "file",
+                                "AREA_FILE_SUFFIX" => "inc",
+                                "EDIT_TEMPLATE" => "",
+                                "PATH" => "/include/main/map/inc_map_text.php"
+                            )
+                        ); ?>
                     </div>
                     <div class="section__content">
-
-                        <img src="/images/map.png?4c8a3d5c65f40de2c2279ce36e3c613e" alt="map-img">
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            array(
+                                "AREA_FILE_SHOW" => "file",
+                                "AREA_FILE_SUFFIX" => "inc",
+                                "EDIT_TEMPLATE" => "",
+                                "PATH" => "/include/main/map/inc_map_img.php"
+                            )
+                        ); ?>
                     </div>
                 </div>
             </div>

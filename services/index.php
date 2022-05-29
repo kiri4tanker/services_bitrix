@@ -1,6 +1,9 @@
-<?
+<?php
 require($_SERVER[ "DOCUMENT_ROOT" ] . "/bitrix/header.php");
-$APPLICATION->SetTitle("Услуги");
+$APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
+$APPLICATION->SetPageProperty("keywords", "Услуги, Услуга. Заказать");
+$APPLICATION->SetPageProperty("description", "Услуги.ru - сервис заказа услуг");
+$APPLICATION->SetTitle("Каталог");
 ?>
 
     <main class="main">
@@ -8,7 +11,16 @@ $APPLICATION->SetTitle("Услуги");
             <div class="container">
                 <div class="section__wrapper">
                     <div class="filter">
-                        <h1 class="filter__title">Каталог услуг</h1>
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            array(
+                                "AREA_FILE_SHOW" => "file",
+                                "AREA_FILE_SUFFIX" => "inc",
+                                "EDIT_TEMPLATE" => "",
+                                "PATH" => "/include/services/inc_services_title.php"
+                            )
+                        ); ?>
                         <form method="post" action="" class="search-form">
                             <input name="search" class="search-form__input" placeholder="Поиск">
                             <button class="search-form__btn">
