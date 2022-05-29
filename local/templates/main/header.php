@@ -4,6 +4,8 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 use Bitrix\Main\Page\Asset;
 
 $asset = Asset::getInstance();
+$asset->addString('<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" defer></script>');
+$asset->addString(' <script nomodule="" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" defer></script>');
 $asset->addCss(SITE_TEMPLATE_PATH . '/css/main.css');
 $asset->addJs(SITE_TEMPLATE_PATH . '/js/main.js');
 ?>
@@ -17,9 +19,7 @@ $asset->addJs(SITE_TEMPLATE_PATH . '/js/main.js');
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.webmanifest">
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" defer></script>
-    <script nomodule="" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-            defer></script> <? $isIndex = $APPLICATION->GetCurPage() == SITE_DIR; ?>
+    <? $isIndex = $APPLICATION->GetCurPage() == SITE_DIR; ?>
 </head>
 <body>
 <div id="panel"><? $APPLICATION->ShowPanel(); ?></div>
@@ -61,7 +61,7 @@ $asset->addJs(SITE_TEMPLATE_PATH . '/js/main.js');
                 ); ?>
             </nav>
             <div class="inline">
-                <a href="/login.html" class="btn">
+                <a href="#" class="btn">
                     <ion-icon name="person-outline"></ion-icon>
                     Войти
                 </a>
