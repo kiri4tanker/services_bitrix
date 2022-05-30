@@ -1,0 +1,1 @@
+<img src="<?=SITE_TEMPLATE_PATH?>/images/feedback.png?dfa60ac6960a221c7c050a5a95d024b0" alt="" class="feedback__img">

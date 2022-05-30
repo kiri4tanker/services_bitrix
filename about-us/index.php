@@ -31,7 +31,7 @@ $APPLICATION->SetTitle("О нас");
                                         "AREA_FILE_SHOW" => "file",
                                         "AREA_FILE_SUFFIX" => "inc",
                                         "EDIT_TEMPLATE" => "",
-                                        "PATH" => "/include/about-us/inc_about-us_title.php"
+                                        "PATH" => "/include/about-us/inc_about-us_text.php"
                                     )
                                 ); ?>
                             </div>

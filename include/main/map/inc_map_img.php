@@ -1,0 +1,1 @@
+<img src="<?=SITE_TEMPLATE_PATH?>/images/map.png?4c8a3d5c65f40de2c2279ce36e3c613e" alt="map-img">
