@@ -1,0 +1,1 @@
+<img src="<?= SITE_TEMPLATE_PATH ?>/images/contact.png?70ff731ec07aa8aa76dc4e040ea69f7b" alt="contant-img" class="section__img">
