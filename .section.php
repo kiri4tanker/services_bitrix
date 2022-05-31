@@ -1,5 +1,5 @@
 <?
-$sSectionName = "Главная";
+$sSectionName = "404";
 $arDirProperties = Array(
 
 );

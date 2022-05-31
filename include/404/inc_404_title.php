@@ -1,0 +1,1 @@
+<h1 class="section__title">Ошибка 404</h1>
