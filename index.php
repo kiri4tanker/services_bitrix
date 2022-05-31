@@ -2,7 +2,7 @@
 require($_SERVER[ "DOCUMENT_ROOT" ] . "/bitrix/header.php");
 $APPLICATION->SetPageProperty("keywords", "Услуги, Услуга. Заказать, Каталог");
 $APPLICATION->SetPageProperty("description", "Каталог услуг сервиса Услуги.ruг");
-$APPLICATION->SetTitle("Каталог");
+$APPLICATION->SetTitle("Главная");
 ?>
     <main class="main">
         <section id="section-search" class="section section_secondary section_background"
@@ -69,70 +69,7 @@ $APPLICATION->SetTitle("Каталог");
                     </div>
                     <div class="section__content">
                         <div class="services">
-                            <div class="service">
-                                <a href="#" class="service__card">
-                                    <img src="<?= SITE_TEMPLATE_PATH ?>/images/1.png?abc714a94271a24679db82fd226e5549"
-                                         alt=""
-                                         class="service__img">
-                                    <p class="service__text">Уборка</p>
-                                </a>
-                            </div>
-                            <div class="service">
-                                <a href="#" class="service__card">
-                                    <img src="<?= SITE_TEMPLATE_PATH ?>/images/2.png?c369db928eaba21add1dda007aace39b"
-                                         alt=""
-                                         class="service__img">
-                                    <p class="service__text">Электрика</p>
-                                </a>
-                            </div>
-                            <div class="service">
-                                <a href="#" class="service__card">
-                                    <img src="<?= SITE_TEMPLATE_PATH ?>/images/3.png?7994d848b7332c6fa2dfcebac5e391a7"
-                                         alt=""
-                                         class="service__img">
-                                    <p class="service__text">Тренировки</p>
-                                </a>
-                            </div>
-                            <div class="service">
-                                <a href="#" class="service__card">
-                                    <img src="<?= SITE_TEMPLATE_PATH ?>/images/4.png?a0ae0bfd0b19a5e679c822f8fef258b2"
-                                         alt=""
-                                         class="service__img">
-                                    <p class="service__text">Перевозка вещей</p>
-                                </a>
-                            </div>
-                            <div class="service">
-                                <a href="#" class="service__card">
-                                    <img src="<?= SITE_TEMPLATE_PATH ?>/images/5.png?a067d8cf11b53ada1e5b73ffd5a67f1d"
-                                         alt=""
-                                         class="service__img">
-                                    <p class="service__text">Юристы</p>
-                                </a>
-                            </div>
-                            <div class="service">
-                                <a href="#" class="service__card">
-                                    <img src="<?= SITE_TEMPLATE_PATH ?>/images/6.png?8ed85f4c8703ee9273848daf64fa3b97"
-                                         alt=""
-                                         class="service__img">
-                                    <p class="service__text">Дизайнеры</p>
-                                </a>
-                            </div>
-                            <div class="service">
-                                <a href="#" class="service__card">
-                                    <img src="<?= SITE_TEMPLATE_PATH ?>/images/7.png?a1233defe5c951a54ff411cb2ece3896"
-                                         alt=""
-                                         class="service__img">
-                                    <p class="service__text">Репетиторство</p>
-                                </a>
-                            </div>
-                            <div class="service">
-                                <a href="#" class="service__card">
-                                    <img src="<?= SITE_TEMPLATE_PATH ?>/images/8.png?e5c91b0f8886faf9491d785acef1ddca"
-                                         alt=""
-                                         class="service__img">
-                                    <p class="service__text">Психологи</p>
-                                </a>
-                            </div>
+                            <!--            Тут нужно пофиксить                -->
                         </div>
                     </div>
                 </div>
@@ -396,72 +333,8 @@ $APPLICATION->SetTitle("Каталог");
                         ); ?>
                     </div>
                     <div class="section__content">
-
                         <div class="services">
-                            <div class="service service_popular">
-                                <a href="#" class="service__card">
-                                    <img src="<?= SITE_TEMPLATE_PATH ?>/images/1.png?abc714a94271a24679db82fd226e5549"
-                                         alt=""
-                                         class="service__img">
-                                    <p class="service__text">Уборка</p>
-                                </a>
-                            </div>
-                            <div class="service service_popular">
-                                <a href="#" class="service__card">
-                                    <img src="<?= SITE_TEMPLATE_PATH ?>/images/9.png?a2be5c50e793f57062477bd5e58d34d8"
-                                         alt=""
-                                         class="service__img">
-                                    <p class="service__text">Электрика</p>
-                                </a>
-                            </div>
-                            <div class="service service_popular">
-                                <a href="#" class="service__card">
-                                    <img src="<?= SITE_TEMPLATE_PATH ?>/images/10.png?995f2c491da2f60df5f418216b5444d9"
-                                         alt=""
-                                         class="service__img">
-                                    <p class="service__text">Тренировки</p>
-                                </a>
-                            </div>
-                            <div class="service service_popular">
-                                <a href="#" class="service__card">
-                                    <img src="<?= SITE_TEMPLATE_PATH ?>/images/11.png?0dbdcb3d4ad2dc5f2ee3362e90984047"
-                                         alt=""
-                                         class="service__img">
-                                    <p class="service__text">Перевозка вещей</p>
-                                </a>
-                            </div>
-                            <div class="service service_popular">
-                                <a href="#" class="service__card">
-                                    <img src="<?= SITE_TEMPLATE_PATH ?>/images/12.png?9108fc27abecb9e321a769b73d329713"
-                                         alt=""
-                                         class="service__img">
-                                    <p class="service__text">Юристы</p>
-                                </a>
-                            </div>
-                            <div class="service service_popular">
-                                <a href="#" class="service__card">
-                                    <img src="<?= SITE_TEMPLATE_PATH ?>/images/13.png?0fb281cd3ddb91c5c545e39363b58769"
-                                         alt=""
-                                         class="service__img">
-                                    <p class="service__text">Дизайнеры</p>
-                                </a>
-                            </div>
-                            <div class="service service_popular">
-                                <a href="#" class="service__card">
-                                    <img src="<?= SITE_TEMPLATE_PATH ?>/images/14.png?79bac2f39cf24fbcecb1f92392db8c3c"
-                                         alt=""
-                                         class="service__img">
-                                    <p class="service__text">Репетиторство</p>
-                                </a>
-                            </div>
-                            <div class="service service_popular">
-                                <a href="#" class="service__card">
-                                    <img src="<?= SITE_TEMPLATE_PATH ?>/images/15.png?b7c1df4522b124603f0a712ebbbb6e63"
-                                         alt=""
-                                         class="service__img">
-                                    <p class="service__text">Психологи</p>
-                                </a>
-                            </div>
+<!--            Тут нужно пофиксить                -->
                         </div>
                     </div>
                 </div>

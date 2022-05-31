@@ -30,7 +30,7 @@ $asset->addJs(SITE_TEMPLATE_PATH . '/js/main.js');
                 <span class="hamburger__line"></span>
                 <span class="hamburger__line"></span>
             </button>
-            <a class="logo" href="index.php">
+            <a class="logo" href="../index.php">
                 <? $APPLICATION->IncludeComponent(
                     "bitrix:main.include",
                     "",
