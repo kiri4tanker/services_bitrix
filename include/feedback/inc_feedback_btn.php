@@ -1,1 +1,0 @@
-<button class="btn">Отправить</button>

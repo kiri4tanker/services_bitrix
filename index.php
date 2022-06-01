@@ -334,7 +334,7 @@ $APPLICATION->SetTitle("Главная");
                     </div>
                     <div class="section__content">
                         <div class="services">
-<!--            Тут нужно пофиксить                -->
+                            <!--            Тут нужно пофиксить                -->
                         </div>
                     </div>
                 </div>
@@ -344,46 +344,58 @@ $APPLICATION->SetTitle("Главная");
             <div class="container">
                 <div class="section__wrapper">
                     <div class="section__heading">
-                        <? $APPLICATION->IncludeComponent(
-                            "bitrix:main.include",
-                            "",
-                            array(
-                                "AREA_FILE_SHOW" => "file",
-                                "AREA_FILE_SUFFIX" => "inc",
-                                "EDIT_TEMPLATE" => "",
-                                "PATH" => "/include/feedback/inc_feedback_title.php"
-                            )
-                        ); ?>
+                        <h3 class="modal__title" id="modal-feedback-title">Мы здесь, чтобы помочь</h3>
                     </div>
                     <div class="section__content">
                         <div class="feedback">
-                            <? $APPLICATION->IncludeComponent(
-                                "bitrix:main.include",
-                                "",
-                                array(
-                                    "AREA_FILE_SHOW" => "file",
-                                    "AREA_FILE_SUFFIX" => "inc",
-                                    "EDIT_TEMPLATE" => "",
-                                    "PATH" => "/include/feedback/inc_feedback_img.php"
-                                )
+                            <img src="<?= SITE_TEMPLATE_PATH ?>/images/feedback.png?dfa60ac6960a221c7c050a5a95d024b0"
+                                 alt=""
+                                 class="feedback__img">
+                            <? $APPLICATION->IncludeComponent("bitrix:iblock.element.add.form", "feedback", array(
+                                "CUSTOM_TITLE_DATE_ACTIVE_FROM" => "",    // * дата начала *
+                                "CUSTOM_TITLE_DATE_ACTIVE_TO" => "",    // * дата завершения *
+                                "CUSTOM_TITLE_DETAIL_PICTURE" => "",    // * подробная картинка *
+                                "CUSTOM_TITLE_DETAIL_TEXT" => "",    // * подробный текст *
+                                "CUSTOM_TITLE_IBLOCK_SECTION" => "",    // * раздел инфоблока *
+                                "CUSTOM_TITLE_NAME" => "Ваше имя",    // * наименование *
+                                "CUSTOM_TITLE_PREVIEW_PICTURE" => "",    // * картинка анонса *
+                                "CUSTOM_TITLE_PREVIEW_TEXT" => "Ваше сообщение",    // * текст анонса *
+                                "CUSTOM_TITLE_TAGS" => "",    // * теги *
+                                "DEFAULT_INPUT_SIZE" => "30",    // Размер полей ввода
+                                "DETAIL_TEXT_USE_HTML_EDITOR" => "N",    // Использовать визуальный редактор для редактирования подробного текста
+                                "ELEMENT_ASSOC" => "CREATED_BY",    // Привязка к пользователю
+                                "GROUPS" => "",    // Группы пользователей, имеющие право на добавление/редактирование
+                                "IBLOCK_ID" => "5",    // Инфоблок
+                                "IBLOCK_TYPE" => "form",    // Тип инфоблока
+                                "LEVEL_LAST" => "Y",    // Разрешить добавление только на последний уровень рубрикатора
+                                "LIST_URL" => "",    // Страница со списком своих элементов
+                                "MAX_FILE_SIZE" => "0",    // Максимальный размер загружаемых файлов, байт (0 - не ограничивать)
+                                "MAX_LEVELS" => "100000",    // Ограничить кол-во рубрик, в которые можно добавлять элемент
+                                "MAX_USER_ENTRIES" => "100000",    // Ограничить кол-во элементов для одного пользователя
+                                "PREVIEW_TEXT_USE_HTML_EDITOR" => "N",    // Использовать визуальный редактор для редактирования текста анонса
+                                "PROPERTY_CODES" => array(    // Свойства, выводимые на редактирование
+                                    0 => "10",
+                                    1 => "11",
+                                    2 => "NAME",
+                                    3 => "PREVIEW_TEXT",
+                                ),
+                                "PROPERTY_CODES_REQUIRED" => array(    // Свойства, обязательные для заполнения
+                                    0 => "10",
+                                    1 => "11",
+                                    2 => "NAME",
+                                    3 => "PREVIEW_TEXT",
+                                ),
+                                "RESIZE_IMAGES" => "N",    // Использовать настройки инфоблока для обработки изображений
+                                "SEF_MODE" => "N",    // Включить поддержку ЧПУ
+                                "STATUS" => "ANY",    // Редактирование возможно
+                                "STATUS_NEW" => "N",    // Деактивировать элемент
+                                "USER_MESSAGE_ADD" => "Спасибо! Ваша заявка отправлена!",    // Сообщение об успешном добавлении
+                                "USER_MESSAGE_EDIT" => "",    // Сообщение об успешном сохранении
+                                "USE_CAPTCHA" => "N",    // Использовать CAPTCHA
+                                "AJAX_MODE" => "Y"
+                            ),
+                                false
                             ); ?>
-                            <form method="post" action="" class="feedback-form">
-                                <input name="name" class="input" placeholder="Имя">
-                                <input name="company" class="input" placeholder="Ваша компания">
-                                <input name="theme" class="input" placeholder="Тема">
-                                <input name="email" class="input" placeholder="Email" type="email">
-                                <textarea name="comment" placeholder="Сообщение" class="input"></textarea>
-                                <? $APPLICATION->IncludeComponent(
-                                    "bitrix:main.include",
-                                    "",
-                                    array(
-                                        "AREA_FILE_SHOW" => "file",
-                                        "AREA_FILE_SUFFIX" => "inc",
-                                        "EDIT_TEMPLATE" => "",
-                                        "PATH" => "/include/feedback/inc_feedback_btn.php"
-                                    )
-                                ); ?>
-                            </form>
                         </div>
                     </div>
                 </div>
