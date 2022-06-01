@@ -38,6 +38,25 @@ if ($arResult[ "MESSAGE" ] <> '') {
                 $isRequired = true;
             }
 
+            if (intval($propertyID) > 0) {
+                if (
+                    $arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "PROPERTY_TYPE" ] == "T"
+                    &&
+                    $arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "ROW_COUNT" ] == "1"
+                )
+                    $arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "PROPERTY_TYPE" ] = "S";
+                elseif (
+                    (
+                        $arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "PROPERTY_TYPE" ] == "S"
+                        ||
+                        $arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "PROPERTY_TYPE" ] == "N"
+                    )
+                    &&
+                    $arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "ROW_COUNT" ] > "1"
+                )
+                    $arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "PROPERTY_TYPE" ] = "T";
+            }
+
             if ($arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "MULTIPLE" ] == "Y") {
                 $inputNum = ($arParams[ "ID" ] > 0 || count($arResult[ "ERRORS" ]) > 0) ? count($arResult[ "ELEMENT_PROPERTIES" ][ $propertyID ]) : 0;
                 $inputNum += $arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "MULTIPLE_CNT" ];
@@ -97,7 +116,6 @@ if ($arResult[ "MESSAGE" ] <> '') {
                             $value = intval($propertyID) > 0 ? $arResult[ "ELEMENT_PROPERTIES" ][ $propertyID ][ $i ][ "VALUE" ] : $arResult[ "ELEMENT" ][ $propertyID ];
                         } elseif ($i == 0) {
                             $value = intval($propertyID) <= 0 ? "" : $arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "DEFAULT_VALUE" ];
-
                         } else {
                             $value = "";
                         }
@@ -111,8 +129,7 @@ if ($arResult[ "MESSAGE" ] <> '') {
                                 type="<?= $type ?>"
                                 name="PROPERTY[<?= $propertyID ?>][<?= $i ?>]"
                                 value="<?= $value ?>"/>
-                        <?
-                    }
+                    <? }
             }; ?>
         <? } ?>
         <input type="submit" class="btn" name="iblock_submit" value="<?= GetMessage("IBLOCK_FORM_SUBMIT") ?>"/>
