@@ -26,8 +26,8 @@ if ($arParams[ "SHOW_INPUT" ] !== "N") {
     ?>
     <form id="<? echo $CONTAINER_ID ?>" method="post" action="<? echo $arResult[ "FORM_ACTION" ] ?>"
           class="search-form">
-        <input id="<? echo $INPUT_ID ?>" value="<?= GetMessage("CT_BST_SEARCH_BUTTON"); ?>" name="search"
-               class="search-form__input" placeholder="Поиск">
+        <input id="<? echo $INPUT_ID ?>" name="search"
+               class="search-form__input" placeholder="<?= GetMessage("CT_BST_SEARCH_PLACEHOLDER") ?>">
         <button class="search-form__btn">
             <ion-icon name="arrow-forward-outline"></ion-icon>
         </button>
