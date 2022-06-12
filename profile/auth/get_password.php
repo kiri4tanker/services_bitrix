@@ -1,5 +1,6 @@
 <?
 require($_SERVER[ "DOCUMENT_ROOT" ] . "/bitrix/header.php");
+$APPLICATION->SetPageProperty("tags", "Восстановление пароля");
 $APPLICATION->SetPageProperty("keywords", "Восстановление пароля");
 $APPLICATION->SetPageProperty("description", "Восстановление пароля");
 $APPLICATION->SetTitle("Восстановление пароля");

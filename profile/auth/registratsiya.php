@@ -1,5 +1,8 @@
 <?
 require($_SERVER[ "DOCUMENT_ROOT" ] . "/bitrix/header.php");
+$APPLICATION->SetPageProperty("tags", "Регистрация");
+$APPLICATION->SetPageProperty("keywords", "Регистрация");
+$APPLICATION->SetPageProperty("description", "Регистрация");
 $APPLICATION->SetTitle("Регистрация");
 ?>
 
