@@ -1,26 +1,8 @@
 <?
 require($_SERVER[ "DOCUMENT_ROOT" ] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Авторизация");
-?><? $APPLICATION->IncludeComponent(
-    "bitrix:main.auth.form",
-    "",
-    array(
-        "AUTH_FORGOT_PASSWORD_URL" => "/recovery/index.php",
-        "AUTH_REGISTER_URL" => "/registration/index.php",
-        "AUTH_SUCCESS_URL" => "/profile/index.php"
-    )
-); ?>
-
+?>
     <main class="main">
-        <section class="breadcrumbs">
-            <div class="container">
-                <div class="breadcrumbs__content">
-                    <a href="index.html" class="breadcrumbs__link">Главная</a>
-                    <ion-icon name="chevron-forward-outline" class="breadcrumbs__arrow"></ion-icon>
-                    <span class="breadcrumbs__link breadcrumbs__link_static">Вход</span>
-                </div>
-            </div>
-        </section>
         <section class="section section_hybrid">
             <div class="container">
                 <div class="section__wrapper">
@@ -29,10 +11,18 @@ $APPLICATION->SetTitle("Авторизация");
                     </div>
                     <div class="section__content">
                         <div class="login">
-                            <img src="../img/section/login.png" alt="login-img" class="login__img">
-                            <form method="post" action="" class="login__form">
-                                <input name="email" class="input" placeholder="Email" type="email">
-                                <input type="password" name="password" class="input" placeholder="Пароль" id="">
+                            <img alt="login-img" src="<?= SITE_TEMPLATE_PATH ?>/img/section/login.png"
+                                 class="login__img">
+                            <? $APPLICATION->IncludeComponent("bitrix:main.auth.form", "auth", array(
+                                "AUTH_FORGOT_PASSWORD_URL" => "/profile/auth/get_password.php",    // Страница для восстановления пароля
+                                "AUTH_REGISTER_URL" => "/profile/auth/registration.php",    // Страница для регистрации
+                                "AUTH_SUCCESS_URL" => "/profile/",    // Страница после успешной авторизации
+                            ),
+                                false
+                            ); ?>
+                            <!--<form method="post" action="" class="login__form">
+                                <input name="email" class="input" placeholder="Email" type="email"> <input
+                                        type="password" name="password" class="input" placeholder="Пароль" id="">
                                 <select class="select" name="user_type" id="">
                                     <option class="option" value="">Исполнитель</option>
                                     <option class="option" value="">Заказчик</option>
@@ -41,7 +31,7 @@ $APPLICATION->SetTitle("Авторизация");
                                     <button class="btn">Войти</button>
                                     <a href="" class="link">Забыли пароль?</a>
                                 </div>
-                            </form>
+                            </form>-->
                         </div>
                     </div>
                 </div>
