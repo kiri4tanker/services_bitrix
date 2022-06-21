@@ -13,75 +13,83 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var CBitrixComponent $component */
 $this->setFrameMode(false);
 
-$arResult[ "PROPERTY_LIST" ] = $arParams[ "PROPERTY_CODES" ];
+$arResult["PROPERTY_LIST"] = $arParams["PROPERTY_CODES"];
 ?>
 
-<? if (!empty($arResult[ "ERRORS" ])) {
-    ShowError(implode("<br />", $arResult[ "ERRORS" ]));
+<? if (!empty($arResult["ERRORS"])) {
+    ShowError(implode("<br />", $arResult["ERRORS"]));
 };
-if ($arResult[ "MESSAGE" ] <> '') {
-    ShowNote($arResult[ "MESSAGE" ]);
+if ($arResult["MESSAGE"] <> '') {
+    ShowNote($arResult["MESSAGE"]);
 }
 ?>
 
 <form class="feedback-form" name="iblock_add" action="<?= POST_FORM_ACTION_URI ?>" method="post"
       enctype="multipart/form-data">
     <?= bitrix_sessid_post() ?>
-    <? if (is_array($arResult[ "PROPERTY_LIST" ]) && !empty($arResult[ "PROPERTY_LIST" ])) { ?>
-        <? foreach ($arResult[ "PROPERTY_LIST" ] as $propertyID) { ?>
-            <? if (intval($propertyID) > 0) $title = ["PROPERTY_LIST_FULL"][ $propertyID ][ "NAME" ];
-            else $title = !empty($arParams[ "CUSTOM_TITLE_" . $propertyID ]) ? $arParams[ "CUSTOM_TITLE_" . $propertyID ] : GetMessage("IBLOCK_FIELD_" . $propertyID);
+    <? if (is_array($arResult["PROPERTY_LIST"]) && !empty($arResult["PROPERTY_LIST"])) { ?>
+        <? foreach ($arResult["PROPERTY_LIST"] as $propertyID) { ?>
+            <?
+
+            $code = !empty($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"]) ? $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] : $propertyID;
+
+            if (intval($propertyID) > 0) {
+                $title = $arResult["PROPERTY_LIST_FULL"][$propertyID]["NAME"];
+            } else {
+                $title = !empty($arParams["CUSTOM_TITLE_" . $code]) ? $arParams["CUSTOM_TITLE_" . $code] : GetMessage("IBLOCK_FIELD_" . $code);
+            }
 
             $isRequired = false;
-            if (in_array($propertyID, $arResult[ "PROPERTY_REQUIRED" ])) {
+
+            if (in_array($propertyID, $arResult["PROPERTY_REQUIRED"])) {
                 $title .= "*";
                 $isRequired = true;
             }
 
             if (intval($propertyID) > 0) {
                 if (
-                    $arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "PROPERTY_TYPE" ] == "T"
+                    $arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] == "T"
                     &&
-                    $arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "ROW_COUNT" ] == "1"
+                    $arResult["PROPERTY_LIST_FULL"][$propertyID]["ROW_COUNT"] == "1"
                 )
-                    $arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "PROPERTY_TYPE" ] = "S";
+                    $arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] = "S";
                 elseif (
                     (
-                        $arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "PROPERTY_TYPE" ] == "S"
+                        $arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] == "S"
                         ||
-                        $arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "PROPERTY_TYPE" ] == "N"
+                        $arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] == "N"
                     )
                     &&
-                    $arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "ROW_COUNT" ] > "1"
+                    $arResult["PROPERTY_LIST_FULL"][$propertyID]["ROW_COUNT"] > "1"
                 )
-                    $arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "PROPERTY_TYPE" ] = "T";
+                    $arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] = "T";
             }
 
-            if ($arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "MULTIPLE" ] == "Y") {
-                $inputNum = ($arParams[ "ID" ] > 0 || count($arResult[ "ERRORS" ]) > 0) ? count($arResult[ "ELEMENT_PROPERTIES" ][ $propertyID ]) : 0;
-                $inputNum += $arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "MULTIPLE_CNT" ];
+            if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["MULTIPLE"] == "Y") {
+                $inputNum = ($arParams["ID"] > 0 || count($arResult["ERRORS"]) > 0) ? count($arResult["ELEMENT_PROPERTIES"][$propertyID]) : 0;
+                $inputNum += $arResult["PROPERTY_LIST_FULL"][$propertyID]["MULTIPLE_CNT"];
             } else
                 $inputNum = 1;
 
-            if ($arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "GetPublicEditHTML" ]) $INPUT_TYPE = "USER_TYPE";
-            else $INPUT_TYPE = $arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "PROPERTY_TYPE" ];
+            if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["GetPublicEditHTML"]) $INPUT_TYPE = "USER_TYPE";
+            else $INPUT_TYPE = $arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"];
 
             switch ($INPUT_TYPE) {
                 case "USER_TYPE":
                     for ($i = 0; $i < $inputNum; $i++) {
-                        if ($arParams[ "ID" ] > 0 || count($arResult[ "ERRORS" ]) > 0) {
-                            $value = intval($propertyID) > 0 ? $arResult[ "ELEMENT_PROPERTIES" ][ $propertyID ][ $i ][ "~VALUE" ] : $arResult[ "ELEMENT" ][ $propertyID ];
-                            $description = intval($propertyID) > 0 ? $arResult[ "ELEMENT_PROPERTIES" ][ $propertyID ][ $i ][ "DESCRIPTION" ] : "";
+                        if ($arParams["ID"] > 0 || count($arResult["ERRORS"]) > 0) {
+                            $value = intval($propertyID) > 0 ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["~VALUE"] : $arResult["ELEMENT"][$propertyID];
+                            $description = intval($propertyID) > 0 ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["DESCRIPTION"] : "";
                         } elseif ($i == 0) {
-                            $value = intval($propertyID) <= 0 ? "" : $arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "DEFAULT_VALUE" ];
+                            $value = intval($propertyID) <= 0 ? "" : $arResult["PROPERTY_LIST_FULL"][$propertyID]["DEFAULT_VALUE"];
                             $description = "";
                         } else {
                             $value = "";
                             $description = "";
                         }
-                        echo call_user_func_array($arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "GetPublicEditHTML" ],
+                        echo call_user_func_array($arResult["PROPERTY_LIST_FULL"][$propertyID]["GetPublicEditHTML"],
                             array(
-                                $arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ],
+                                $arResult["PROPERTY_LIST_FULL"][$propertyID],
                                 array(
                                     "VALUE" => $value,
                                     "DESCRIPTION" => $description,
@@ -96,10 +104,10 @@ if ($arResult[ "MESSAGE" ] <> '') {
                     break;
                 case "T":
                     for ($i = 0; $i < $inputNum; $i++) {
-                        if ($arParams[ "ID" ] > 0 || count($arResult[ "ERRORS" ]) > 0) {
-                            $value = intval($propertyID) > 0 ? $arResult[ "ELEMENT_PROPERTIES" ][ $propertyID ][ $i ][ "VALUE" ] : $arResult[ "ELEMENT" ][ $propertyID ];
+                        if ($arParams["ID"] > 0 || count($arResult["ERRORS"]) > 0) {
+                            $value = intval($propertyID) > 0 ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE"] : $arResult["ELEMENT"][$propertyID];
                         } elseif ($i == 0) {
-                            $value = intval($propertyID) > 0 ? "" : $arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "DEFAULT_VALUE" ];
+                            $value = intval($propertyID) > 0 ? "" : $arResult["PROPERTY_LIST_FULL"][$propertyID]["DEFAULT_VALUE"];
                         } else {
                             $value = "";
                         }
@@ -112,19 +120,19 @@ if ($arResult[ "MESSAGE" ] <> '') {
                 case "S":
                 case "N":
                     for ($i = 0; $i < $inputNum; $i++) {
-                        if ($arParams[ "ID" ] > 0 || count($arResult[ "ERRORS" ]) > 0) {
-                            $value = intval($propertyID) > 0 ? $arResult[ "ELEMENT_PROPERTIES" ][ $propertyID ][ $i ][ "VALUE" ] : $arResult[ "ELEMENT" ][ $propertyID ];
+                        if ($arParams["ID"] > 0 || count($arResult["ERRORS"]) > 0) {
+                            $value = intval($propertyID) > 0 ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE"] : $arResult["ELEMENT"][$propertyID];
                         } elseif ($i == 0) {
-                            $value = intval($propertyID) <= 0 ? "" : $arResult[ "PROPERTY_LIST_FULL" ][ $propertyID ][ "DEFAULT_VALUE" ];
+                            $value = intval($propertyID) <= 0 ? "" : $arResult["PROPERTY_LIST_FULL"][$propertyID]["DEFAULT_VALUE"];
                         } else {
                             $value = "";
                         }
 
                         $type = "text";
-                        if ($arResult[ "PROPERTY_LIST_FULL" ][ $propertyID[ "CODE" ] == "EMAIL" ]) $type = "email";
-                        else if ($arResult[ "PROPERTY_LIST_FULL" ][ $propertyID[ "CODE" ] == "PHONE" ]) $type = "tel";
+                        if ($arResult["PROPERTY_LIST_FULL"][$propertyID["CODE"] == "EMAIL"]) $type = "email";
+                        else if ($arResult["PROPERTY_LIST_FULL"][$propertyID["CODE"] == "PHONE"]) $type = "tel";
                         ?>
-                        <input <? if ($isRequired) echo "required" ?>
+                        <input <?= $isRequired ? "required" : '' ?>
                                 placeholder="<?= $title ?>" class="input"
                                 type="<?= $type ?>"
                                 name="PROPERTY[<?= $propertyID ?>][<?= $i ?>]"

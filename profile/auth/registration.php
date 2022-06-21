@@ -1,5 +1,5 @@
 <?
-require($_SERVER[ "DOCUMENT_ROOT" ] . "/bitrix/header.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetPageProperty("tags", "Регистрация");
 $APPLICATION->SetPageProperty("keywords", "Регистрация");
 $APPLICATION->SetPageProperty("description", "Регистрация");
@@ -16,20 +16,26 @@ $APPLICATION->SetTitle("Регистрация");
                         <div class="register">
                             <img alt="register-img" src="/local/templates/main/images/register.png"
                                  class="register__img">
-                            <? $APPLICATION->IncludeComponent(
-                                "bitrix:main.register",
-                                "register",
-                                array(
-                                    "AUTH" => "Y",
-                                    "REQUIRED_FIELDS" => array("EMAIL", "NAME", "SECOND_NAME", "LAST_NAME", "PERSONAL_MOBILE"),
-                                    "SET_TITLE" => "Y",
-                                    "SHOW_FIELDS" => array("EMAIL", "NAME", "SECOND_NAME", "LAST_NAME", "PERSONAL_MOBILE"),
-                                    "SUCCESS_PAGE" => "/profile/",
-                                    "USER_PROPERTY" => array(),
-                                    "USER_PROPERTY_NAME" => "",
-                                    "USE_BACKURL" => "Y"
-                                )
-                            ); ?>
+                            <?
+                            if (!$USER->IsAuthorized()) {
+                                $APPLICATION->IncludeComponent(
+                                    "bitrix:main.register",
+                                    "",
+                                    array(
+                                        "AUTH" => "Y",
+                                        "REQUIRED_FIELDS" => array("EMAIL", "NAME", "SECOND_NAME", "LAST_NAME", "PERSONAL_MOBILE"),
+                                        "SET_TITLE" => "Y",
+                                        "SHOW_FIELDS" => array("EMAIL", "NAME", "SECOND_NAME", "LAST_NAME", "PERSONAL_MOBILE"),
+                                        "SUCCESS_PAGE" => "/profile/",
+                                        "USER_PROPERTY" => array(),
+                                        "USER_PROPERTY_NAME" => "",
+                                        "USE_BACKURL" => "Y"
+                                    )
+
+                                );
+                            } else {
+                                LocalRedirect(SITE_DIR . 'profile/');
+                            } ?>
                             <!--<form method="post" action="" class="register__form">
                                             <input name="name" class="input" placeholder="ФИО" type="text" require>
                                             <input name="phone" class="input" placeholder="Телефон" type="tel" id="phone" require>
@@ -55,4 +61,4 @@ $APPLICATION->SetTitle("Регистрация");
             </div>
         </section>
     </main>
-<? require($_SERVER[ "DOCUMENT_ROOT" ] . "/bitrix/footer.php"); ?>
+<? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

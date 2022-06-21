@@ -5,7 +5,7 @@ $arUrlRewrite=array (
     'CONDITION' => '#^/catalog/#',
     'RULE' => '',
     'ID' => 'bitrix:news',
-    'PATH' => '/index.php',
+    'PATH' => '/catalog/index.php',
     'SORT' => 100,
   ),
   0 => 
