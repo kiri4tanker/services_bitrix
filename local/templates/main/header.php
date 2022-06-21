@@ -61,7 +61,7 @@ $asset->addJs(SITE_TEMPLATE_PATH . '/js/main.js');
                 ); ?>
             </nav>
             <div class="inline">
-                <a href="#" class="btn">
+                <a href="/profile/auth/index.php" class="btn">
                     <ion-icon name="person-outline"></ion-icon>
                     Войти
                 </a>
