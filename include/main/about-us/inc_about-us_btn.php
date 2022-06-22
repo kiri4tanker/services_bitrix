@@ -1,1 +1,1 @@
-<a href="/about-us/about-us.php" class="btn">Читать далее</a>
+<a href="/about-us/" class="btn">Читать далее</a>
