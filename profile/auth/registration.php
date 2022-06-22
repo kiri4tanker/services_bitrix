@@ -20,7 +20,7 @@ $APPLICATION->SetTitle("Регистрация");
                             if (!$USER->IsAuthorized()) {
                                 $APPLICATION->IncludeComponent(
                                     "bitrix:main.register",
-                                    "",
+                                    "register",
                                     array(
                                         "AUTH" => "Y",
                                         "REQUIRED_FIELDS" => array("EMAIL", "NAME", "SECOND_NAME", "LAST_NAME", "PERSONAL_MOBILE"),
