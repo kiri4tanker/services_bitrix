@@ -61,10 +61,17 @@ $asset->addJs(SITE_TEMPLATE_PATH . '/js/main.js');
 					); ?>
             </nav>
             <div class="inline">
-                <a href="/profile/auth/index.php" class="btn">
-                    <ion-icon name="person-outline"></ion-icon>
-                    Войти
-                </a>
+					<? if(!$USER->IsAuthorized()){ ?>
+                   <a href="/profile/auth/index.php" class="btn">
+                       <ion-icon name="person-outline"></ion-icon>
+                       Войти
+                   </a>
+					<? }else{ ?>
+                   <a href="/profile/" class="btn">
+                       <ion-icon name="person-outline"></ion-icon>
+                       Профиль
+                   </a>
+					<? } ?>
                 <button class="btn" data-micromodal-trigger="modal-feedback">
                     <ion-icon name="build-outline"></ion-icon>
                 </button>
