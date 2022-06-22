@@ -1,4 +1,5 @@
 <?
+define("NEED_AUTH", true);
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetPageProperty("tags", "Восстановление пароля");
 $APPLICATION->SetPageProperty("keywords", "Восстановление пароля");
