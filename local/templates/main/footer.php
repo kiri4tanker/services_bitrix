@@ -51,14 +51,59 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
                 <button class="modal__close" aria-label="Close modal" data-micromodal-close=""></button>
             </header>
             <main class="modal__content" id="modal-feedback-content">
-                <form method="post" action="" class="feedback-form">
-                    <input name="name" class="input" placeholder="Имя">
-                    <input name="company" class="input" placeholder="Ваша компания">
-                    <input name="theme" class="input" placeholder="Тема">
-                    <input name="email" class="input" placeholder="Email" type="email">
-                    <textarea name="comment" placeholder="Сообщение" class="input"></textarea>
-                    <button class="btn">Отправить</button>
-                </form>
+					<? $APPLICATION->IncludeComponent(
+						"bitrix:iblock.element.add.form",
+						"feedback",
+						array(
+							"CUSTOM_TITLE_DATE_ACTIVE_FROM" => "",
+							"CUSTOM_TITLE_DATE_ACTIVE_TO" => "",
+							"CUSTOM_TITLE_DETAIL_PICTURE" => "",
+							"CUSTOM_TITLE_DETAIL_TEXT" => "",
+							"CUSTOM_TITLE_IBLOCK_SECTION" => "",
+							"CUSTOM_TITLE_NAME" => "Ваше имя",
+							"CUSTOM_TITLE_PREVIEW_PICTURE" => "",
+							"CUSTOM_TITLE_PREVIEW_TEXT" => "Ваше сообщение",
+							"CUSTOM_TITLE_TAGS" => "",
+							"CUSTOM_TITLE_PHONE" => "Телефон",
+							"CUSTOM_TITLE_EMAIL" => "Email",
+							"DEFAULT_INPUT_SIZE" => "30",
+							"DETAIL_TEXT_USE_HTML_EDITOR" => "N",
+							"ELEMENT_ASSOC" => "CREATED_BY",
+							"GROUPS" => array(
+								0 => "2",
+							),
+							"IBLOCK_ID" => "5",
+							"IBLOCK_TYPE" => "form",
+							"LEVEL_LAST" => "Y",
+							"LIST_URL" => "",
+							"MAX_FILE_SIZE" => "0",
+							"MAX_LEVELS" => "100000",
+							"MAX_USER_ENTRIES" => "100000",
+							"PREVIEW_TEXT_USE_HTML_EDITOR" => "N",
+							"PROPERTY_CODES" => array(
+								0 => "10",
+								1 => "11",
+								2 => "NAME",
+								3 => "PREVIEW_TEXT",
+							),
+							"PROPERTY_CODES_REQUIRED" => array(
+								0 => "10",
+								1 => "11",
+								2 => "NAME",
+								3 => "PREVIEW_TEXT",
+							),
+							"RESIZE_IMAGES" => "N",
+							"SEF_MODE" => "N",
+							"STATUS" => "ANY",
+							"STATUS_NEW" => "N",
+							"USER_MESSAGE_ADD" => "Спасибо! Ваша заявка отправлена!",
+							"USER_MESSAGE_EDIT" => "",
+							"USE_CAPTCHA" => "N",
+							"AJAX_MODE" => "Y",
+							"COMPONENT_TEMPLATE" => "feedback"
+						),
+						false
+					); ?>
             </main>
         </div>
     </div>
