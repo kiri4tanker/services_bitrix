@@ -10,15 +10,20 @@ $APPLICATION->SetTitle("Личный кабинет");
             <div class="container">
                 <div class="section__wrapper">
                     <div class="section__content">
-							  <? $APPLICATION->IncludeComponent("bitrix:main.profile", "profile", array(
-								  "CHECK_RIGHTS" => "N",    // Проверять права доступа
-								  "SEND_INFO" => "N",    // Генерировать почтовое событие
-								  "SET_TITLE" => "Y",    // Устанавливать заголовок страницы
-								  "USER_PROPERTY" => "",    // Показывать доп. свойства
-								  "USER_PROPERTY_NAME" => "",    // Название закладки с доп. свойствами
-							  ),
-								  false
-							  ); ?>
+							  <? if($USER->IsAuthorized()){
+								  $APPLICATION->IncludeComponent("bitrix:main.profile", "profile", array(
+									  "CHECK_RIGHTS" => "N",    // Проверять права доступа
+									  "SEND_INFO" => "N",    // Генерировать почтовое событие
+									  "SET_TITLE" => "Y",    // Устанавливать заголовок страницы
+									  "USER_PROPERTY" => "",    // Показывать доп. свойства
+									  "USER_PROPERTY_NAME" => "",    // Название закладки с доп. свойствами
+								  ),
+									  false
+								  );
+							  }else{
+								  LocalRedirect('/');
+							  }
+							  ?>
                         <!--<div class="profile">
                             <img src="/images/avatar.png?3ba42f88bca9ea4135380efe1bb939d7" alt="avatar"
                                  class="profile__img">

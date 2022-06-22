@@ -16,8 +16,7 @@ $APPLICATION->SetTitle("Регистрация");
                         <div class="register">
                             <img alt="register-img" src="/local/templates/main/images/register.png"
                                  class="register__img">
-									<?
-									if(!$USER->IsAuthorized()){
+									<? if(!$USER->IsAuthorized()){
 										$APPLICATION->IncludeComponent(
 											"bitrix:main.register",
 											"register",

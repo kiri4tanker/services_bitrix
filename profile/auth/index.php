@@ -13,10 +13,9 @@ $APPLICATION->SetTitle("Авторизация");
                     <div class="section__content">
                         <div class="login">
                             <img src="<?= SITE_TEMPLATE_PATH ?>/images/login.png" alt="login-img" class="login__img">
-									<?
-									if(!$USER->IsAuthorized()){
+									<? if(!$USER->IsAuthorized()){
 										$APPLICATION->IncludeComponent("bitrix:main.auth.form", "auth", array(
-											"AUTH_FORGOT_PASSWORD_URL" => "/profile/auth/get_password.php",    // Страница для восстановления пароля
+											"AUTH_FORGOT_PASSWORD_URL" => "/profile/auth/get_password.php?forgot_password=yes",    // Страница для восстановления пароля
 											"AUTH_REGISTER_URL" => "/profile/auth/registration.php",    // Страница для регистрации
 											"AUTH_SUCCESS_URL" => "/profile/",    // Страница после успешной авторизации
 										),
@@ -24,8 +23,7 @@ $APPLICATION->SetTitle("Авторизация");
 										);
 									}else{
 										LocalRedirect(SITE_DIR . 'profile/');
-									}
-									?>
+									} ?>
                         </div>
                     </div>
                 </div>
