@@ -1,4 +1,4 @@
-<? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+<? if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
@@ -12,19 +12,19 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true); ?>
 <?
-$INPUT_ID = trim($arParams[ "~INPUT_ID" ]);
-if ($INPUT_ID == '')
-    $INPUT_ID = "title-search-input";
+$INPUT_ID = trim($arParams["~INPUT_ID"]);
+if($INPUT_ID == '')
+	$INPUT_ID = "title-search-input";
 $INPUT_ID = CUtil::JSEscape($INPUT_ID);
 
-$CONTAINER_ID = trim($arParams[ "~CONTAINER_ID" ]);
-if ($CONTAINER_ID == '')
-    $CONTAINER_ID = "title-search";
+$CONTAINER_ID = trim($arParams["~CONTAINER_ID"]);
+if($CONTAINER_ID == '')
+	$CONTAINER_ID = "title-search";
 $CONTAINER_ID = CUtil::JSEscape($CONTAINER_ID);
 
-if ($arParams[ "SHOW_INPUT" ] !== "N") {
-    ?>
-    <form id="<? echo $CONTAINER_ID ?>" method="post" action="<? echo $arResult[ "FORM_ACTION" ] ?>"
+if($arParams["SHOW_INPUT"] !== "N"){
+	?>
+    <form id="<? echo $CONTAINER_ID ?>" method="post" action="<? echo $arResult["FORM_ACTION"] ?>"
           class="search-form">
         <input id="<? echo $INPUT_ID ?>" name="search"
                class="search-form__input" placeholder="<?= GetMessage("CT_BST_SEARCH_PLACEHOLDER") ?>">

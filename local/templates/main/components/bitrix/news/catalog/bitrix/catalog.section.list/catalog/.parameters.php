@@ -1,5 +1,5 @@
 <?
-if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 $arViewModeList = array(
 	'LIST' => GetMessage('CPT_BCSL_VIEW_MODE_LIST'),
@@ -26,8 +26,7 @@ $arTemplateParameters = array(
 	),
 );
 
-if (isset($arCurrentValues['VIEW_MODE']) && 'TILE' == $arCurrentValues['VIEW_MODE'])
-{
+if(isset($arCurrentValues['VIEW_MODE']) && 'TILE' == $arCurrentValues['VIEW_MODE']){
 	$arTemplateParameters['HIDE_SECTION_NAME'] = array(
 		'PARENT' => 'VISUAL',
 		'NAME' => GetMessage('CPT_BCSL_HIDE_SECTION_NAME'),

@@ -606,21 +606,21 @@ img {
    padding: 25px 0;
    background: var(--footer-color);
 }
-.footer .logo { 
+.footer .logo {
    grid-area: footer-logo;
-   justify-self: start; 
+   justify-self: start;
 }
 .footer .nav { grid-area: footer-nav;}
-.footer .footer__feedback { 
+.footer .footer__feedback {
    grid-area: footer-feedback;
-   justify-self: end; 
+   justify-self: end;
 }
 .footer .footer__line { grid-area: footer-line; }
 .footer .footer__copyright { grid-area: footer-copyright; }
 .footer__wrapper {
    display: grid;
    grid-template-columns: auto 1fr auto;
-   grid-template-areas: 
+   grid-template-areas:
       "footer-logo footer-nav footer-feedback"
       "footer-line footer-line footer-line"
       "footer-copyright footer-copyright footer-copyright";
@@ -643,7 +643,7 @@ img {
 .service-single {
    display: grid;
    grid-template-columns: 280px 1fr;
-   grid-template-areas: 
+   grid-template-areas:
       "service-img service-text";
    -moz-column-gap: var(--gutter);
         column-gap: var(--gutter);
@@ -690,7 +690,7 @@ img {
         column-gap: var(--gutter);
    row-gap: calc(var(--gutter)*2);
    grid-template-columns: 200px 1fr;
-   grid-template-areas: 
+   grid-template-areas:
       "profile-img profile-text"
       "profile-line profile-line"
       "profile-tabs profile-orders";
@@ -869,7 +869,7 @@ img {
    padding: 20px 10px;
 }
 .stats__text {
-   color: var(--text-muted-color);  
+   color: var(--text-muted-color);
 }
 /* services popular */
 .service_popular {
@@ -1211,7 +1211,7 @@ ion-icon {
 .list-group .checkbox_full .checkbox__text {
    line-height: 40px;
 }
-/* services */ 
+/* services */
 .services__line {
    background: var(--border-color);
    height: 1px;
@@ -1328,10 +1328,10 @@ ion-icon {
 
 }
 /* from md to lg */
-@media (max-width: 992px) {	
+@media (max-width: 992px) {
    .footer__wrapper {
       grid-template-columns: auto auto;
-      grid-template-areas: 
+      grid-template-areas:
          "footer-logo footer-feedback" 
          "footer-nav footer-nav" 
          "footer-line footer-line"

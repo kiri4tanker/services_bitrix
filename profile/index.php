@@ -1,5 +1,5 @@
 <?php
-require($_SERVER[ "DOCUMENT_ROOT" ] . "/bitrix/header.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetPageProperty("keywords", "Услуги, Услуга. Заказать, Сервис, Профиль, Личный Кабинет");
 $APPLICATION->SetPageProperty("description", "Личный кабинет - Услуги.ru");
 $APPLICATION->SetTitle("Личный кабинет");
@@ -10,15 +10,15 @@ $APPLICATION->SetTitle("Личный кабинет");
             <div class="container">
                 <div class="section__wrapper">
                     <div class="section__content">
-                        <? $APPLICATION->IncludeComponent("bitrix:main.profile", "profile", array(
-                            "CHECK_RIGHTS" => "N",    // Проверять права доступа
-                            "SEND_INFO" => "N",    // Генерировать почтовое событие
-                            "SET_TITLE" => "Y",    // Устанавливать заголовок страницы
-                            "USER_PROPERTY" => "",    // Показывать доп. свойства
-                            "USER_PROPERTY_NAME" => "",    // Название закладки с доп. свойствами
-                        ),
-                            false
-                        ); ?>
+							  <? $APPLICATION->IncludeComponent("bitrix:main.profile", "profile", array(
+								  "CHECK_RIGHTS" => "N",    // Проверять права доступа
+								  "SEND_INFO" => "N",    // Генерировать почтовое событие
+								  "SET_TITLE" => "Y",    // Устанавливать заголовок страницы
+								  "USER_PROPERTY" => "",    // Показывать доп. свойства
+								  "USER_PROPERTY_NAME" => "",    // Название закладки с доп. свойствами
+							  ),
+								  false
+							  ); ?>
                         <!--<div class="profile">
                             <img src="/images/avatar.png?3ba42f88bca9ea4135380efe1bb939d7" alt="avatar"
                                  class="profile__img">
@@ -81,4 +81,4 @@ $APPLICATION->SetTitle("Личный кабинет");
         </section>
     </main>
 
-<? require($_SERVER[ "DOCUMENT_ROOT" ] . "/bitrix/footer.php"); ?>
+<? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

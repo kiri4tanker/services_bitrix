@@ -17,18 +17,18 @@ $APPLICATION->SetTitle("Восстановление пароля");
                 <div class="section__content">
                     <div class="login">
                         <img src="<?= SITE_TEMPLATE_PATH ?>/images/login.png" alt="login-img" class="login__img">
-                        <?
-                        if (!$USER->IsAuthorized()) {
-                            $APPLICATION->IncludeComponent("bitrix:main.auth.forgotpasswd", "get_password", array(
-                                "AUTH_AUTH_URL" => "/profile/auth/",    // Страница для авторизации
-                                "AUTH_REGISTER_URL" => "/profile/auth/registration.php",    // Страница для регистрации
-                            ),
-                                false
-                            );
-                        } else {
-                            LocalRedirect(SITE_DIR . 'profile/');
-                        }
-                        ?>
+							  <?
+							  if(!$USER->IsAuthorized()){
+								  $APPLICATION->IncludeComponent("bitrix:main.auth.forgotpasswd", "get_password", array(
+									  "AUTH_AUTH_URL" => "/profile/auth/",    // Страница для авторизации
+									  "AUTH_REGISTER_URL" => "/profile/auth/registration.php",    // Страница для регистрации
+								  ),
+									  false
+								  );
+							  }else{
+								  LocalRedirect(SITE_DIR . 'profile/');
+							  }
+							  ?>
                     </div>
                 </div>
             </div>

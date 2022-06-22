@@ -1,7 +1,7 @@
 <?
 $sSectionName = "Авторизация";
 $arDirProperties = array(
-    "description" => "Авторизация",
-    "keywords" => "Авторизация"
+	"description" => "Авторизация",
+	"keywords" => "Авторизация"
 );
 ?>

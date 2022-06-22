@@ -1,32 +1,32 @@
 <?
-$aMenuLinks = Array(
-	Array(
-		"Главная", 
-		"/index.php", 
-		Array(), 
-		Array(), 
-		"" 
+$aMenuLinks = array(
+	array(
+		"Главная",
+		"/index.php",
+		array(),
+		array(),
+		""
 	),
-	Array(
-		"Услуги", 
-		"/services/", 
-		Array(), 
-		Array(), 
-		"" 
+	array(
+		"Услуги",
+		"/services/",
+		array(),
+		array(),
+		""
 	),
-	Array(
-		"О сервисе", 
-		"/about-us/", 
-		Array(), 
-		Array(), 
-		"" 
+	array(
+		"О сервисе",
+		"/about-us/",
+		array(),
+		array(),
+		""
 	),
-	Array(
-		"Контакты", 
-		"/contacts/", 
-		Array(), 
-		Array(), 
-		"" 
+	array(
+		"Контакты",
+		"/contacts/",
+		array(),
+		array(),
+		""
 	)
 );
 ?>
