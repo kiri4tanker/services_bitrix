@@ -1,1 +1,1 @@
-<a href="services.html" class="btn">Посмотреть все</a>
+<a href="/catalog/" class="btn">Посмотреть все</a>
