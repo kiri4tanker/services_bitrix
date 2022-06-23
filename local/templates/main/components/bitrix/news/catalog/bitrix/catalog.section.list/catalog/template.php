@@ -22,12 +22,15 @@ $arSectionDeleteParams = array("CONFIRM" => GetMessage('CT_BCSL_ELEMENT_DELETE_C
 	$this->AddDeleteAction($arSection['ID'], $arSection['DELETE_LINK'], $strSectionDelete, $arSectionDeleteParams);
 	?>
     <div class="service">
-        <a
-                class="service__card"
-                href="<?= $arSection['SECTION_PAGE_URL'] ?> id="<?= $this->GetEditAreaId($arSection['ID']) ?>">
-        <img class="service__img" src="<?= $arSection['PICTURE']['SRC'] ?>"
+        <a class="service__card"
+           href="<?= $arSection['SECTION_PAGE_URL'] ?>
+           id="<?= $this->GetEditAreaId($arSection['ID']) ?>">
+        <img class="service__img"
+             src="<?= $arSection['PICTURE']['SRC'] ?>"
              alt="<?= $arSection['PICTURE']['ALT'] ?>"/>
-        <p class="service__text"><?= $arSection["NAME"] ?></p>
+        <p class="service__text">
+			  <?= $arSection["NAME"] ?>
+        </p>
         </a>
     </div>
 <? }

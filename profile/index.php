@@ -21,7 +21,7 @@ $APPLICATION->SetTitle("Личный кабинет");
 									  false
 								  );
 							  }else{
-								  LocalRedirect('/');
+								  LocalRedirect('/profile/auth/');
 							  }
 							  ?>
                         <!--<div class="profile">

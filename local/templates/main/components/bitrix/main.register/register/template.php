@@ -43,35 +43,42 @@ if($arResult["SHOW_SMS_FIELD"] == true){
 
 <div class="bx-auth-reg">
 
-	<? if($USER->IsAuthorized()): ?>
-
-       <p><?= GetMessage("MAIN_REGISTER_AUTH") ?></p>
-
-	<? else: ?>
-	<? if(count($arResult["ERRORS"]) > 0):
+	<? if($USER->IsAuthorized()){ ?>
+       <p>
+			 <?= GetMessage("MAIN_REGISTER_AUTH") ?>
+       </p>
+	<? }else{ ?>
+	<? if(count($arResult["ERRORS"]) > 0){
 		foreach($arResult["ERRORS"] as $key => $error)
-			if(intval($key) == 0 && $key !== 0)
+			if(intval($key) == 0 && $key !== 0){
 				$arResult["ERRORS"][$key] = str_replace("#FIELD_NAME#", "&quot;" . GetMessage("REGISTER_FIELD_" . $key) . "&quot;", $error);
-
+			}
 		ShowError(implode("<br />", $arResult["ERRORS"]));
+	}elseif($arResult["USE_EMAIL_CONFIRMATION"] === "Y"){ ?>
+       <p>
+			 <?= GetMessage("REGISTER_EMAIL_WILL_BE_SENT") ?>
+       </p>
+	<? } ?>
 
-   elseif($arResult["USE_EMAIL_CONFIRMATION"] === "Y"): ?>
-       <p><?= GetMessage("REGISTER_EMAIL_WILL_BE_SENT") ?></p>
-	<? endif ?>
-
-	<? if($arResult["SHOW_SMS_FIELD"] == true): ?>
-
-       <form method="post" action="<?= POST_FORM_ACTION_URI ?>" name="regform">
-			 <? if($arResult["BACKURL"] <> ''): ?>
-              <input type="hidden" name="backurl" value="<?= $arResult["BACKURL"] ?>"/>
-			 <? endif; ?>
-           <input class="input" type="hidden" name="SIGNED_DATA"
+	<? if($arResult["SHOW_SMS_FIELD"] == true){ ?>
+       <form class="register__form" method="post" action="<?= POST_FORM_ACTION_URI ?>" name="regform">
+			 <? if($arResult["BACKURL"] <> ''){ ?>
+              <input class="input"
+                     type="hidden"
+                     name="backurl"
+                     value="<?= $arResult["BACKURL"] ?>"/>
+			 <? }; ?>
+           <input type="hidden"
+                  name="SIGNED_DATA"
                   value="<?= htmlspecialcharsbx($arResult["SIGNED_DATA"]) ?>"/>
-			 <?= GetMessage("main_register_sms") ?><span class="starrequired">*</span><input size="30" type="text"
-                                                                                          name="SMS_CODE"
-                                                                                          value="<?= htmlspecialcharsbx($arResult["SMS_CODE"]) ?>"
-                                                                                          autocomplete="off"/>
-           <input type="submit" name="code_submit_button"
+			 <?= GetMessage("main_register_sms") ?>
+           <span class="starrequired">*</span>
+           <input type="text"
+                  name="SMS_CODE"
+                  value="<?= htmlspecialcharsbx($arResult["SMS_CODE"]) ?>"
+                  autocomplete="off"/>
+           <input type="submit"
+                  name="code_submit_button"
                   value="<?= GetMessage("main_register_sms_send") ?>"/>
        </form>
 
@@ -97,66 +104,65 @@ if($arResult["SHOW_SMS_FIELD"] == true){
            });
        </script>
 
-       <div id="bx_register_error" style="display:none"><? ShowError("error") ?></div>
-
-       <div id="bx_register_resend"></div>
-
-	<? else: ?>
-
+	<? }else{ ?>
        <form class="register__form" method="post" action="<?= POST_FORM_ACTION_URI ?>" name="regform"
              enctype="multipart/form-data">
-			 <? foreach($arResult["SHOW_FIELDS"] as $FIELD): ?>
-				 <? if($FIELD == "AUTO_TIME_ZONE" && $arResult["TIME_ZONE_ENABLED"] == true): ?>
+			 <? foreach($arResult["SHOW_FIELDS"] as $FIELD){ ?>
+				 <? if($FIELD == "AUTO_TIME_ZONE" && $arResult["TIME_ZONE_ENABLED"] == true){ ?>
 					 <?= GetMessage("main_profile_time_zones_auto") ?>
-					 <? if($arResult["REQUIRED_FIELDS_FLAGS"][$FIELD] == "Y"): ?>
-                  <span class="starrequired">*</span>
-				 <? endif ?>
-				 <? else: ?>
-					 <?= GetMessage("REGISTER_FIELD_" . $FIELD) ?>
-                  :<? if($arResult["REQUIRED_FIELDS_FLAGS"][$FIELD] == "Y"): ?>
-                  <span class="starrequired">*</span><? endif ?>
-				 <? switch($FIELD){
-				 case "PASSWORD":
-				 ?>
-              <input class="input" type="password" name="REGISTER[<?= $FIELD ?>]"
-                     value="<?= $arResult["VALUES"][$FIELD] ?>" autocomplete="off"/>
-				 <? if($arResult["SECURE_AUTH"]): ?>
-                  <span class="bx-auth-secure" id="bx_auth_secure"
-                        title="<? echo GetMessage("AUTH_SECURE_NOTE") ?>" style="display:none">
-					<div class="bx-auth-secure-icon"></div>
-				</span>
-                  <noscript>
-				<span class="bx-auth-secure" title="<? echo GetMessage("AUTH_NONSECURE_NOTE") ?>">
-					<div class="bx-auth-secure-icon bx-auth-secure-unlock"></div>
-				</span>
-                  </noscript>
-                  <script type="text/javascript">
-                      document.getElementById('bx_auth_secure').style.display = 'inline-block';
-                  </script>
-				 <? endif ?>
-				 <? break;
-				 case "CONFIRM_PASSWORD": ?>
-              <input class="input" type="password" name="REGISTER[<?= $FIELD ?>]"
-                     value="<?= $arResult["VALUES"][$FIELD] ?>" autocomplete="off"/>
-					 <? break; ?>
+				 <? }else{ ?>
+					 <? $title = GetMessage("REGISTER_FIELD_" . $FIELD); ?>
+					 <? if($arResult["REQUIRED_FIELDS_FLAGS"][$FIELD] == "Y"){
+						 $title .= "*";
+						 $isRequired = true;
+					 } ?>
+					 <? switch($FIELD){
+						 case "PASSWORD": ?>
+                       <input placeholder="<?= $title ?>"
+                              class="input"
+                              type="password"
+                              name="REGISTER[<?= $FIELD ?>]"
+								  <? if($isRequired) echo "required" ?>
+                              value="<?= $arResult["VALUES"][$FIELD] ?>"
+                              autocomplete="off"/>
+							 <? break;
+						 case "CONFIRM_PASSWORD": ?>
+                       <input placeholder="<?= $title ?>"
+                              class="input"
+                              type="password"
+                              name="REGISTER[<?= $FIELD ?>]"
+								  <? if($isRequired) echo "required" ?>
+                              value="<?= $arResult["VALUES"][$FIELD] ?>"
+                              autocomplete="off"/>
+							 <? break; ?>
+						 <? default: ?>
+                          <input placeholder="<?= $title ?>"
+                                 class="input"
+                                 type="text"
+									  <? if($isRequired) echo "required" ?>
+                                 name="REGISTER[<?= $FIELD ?>]"
+                                 value="<?= $arResult["VALUES"][$FIELD] ?>"/>
+						 <? } ?>
 				 <? } ?>
-				 <? endif ?>
-			 <? endforeach ?>
+			 <? } ?>
 
-			 <? if($arResult["USER_PROPERTIES"]["SHOW"] == "Y"): ?>
+			 <? if($arResult["USER_PROPERTIES"]["SHOW"] == "Y"){ ?>
 				 <?= trim($arParams["USER_PROPERTY_NAME"]) <> '' ? $arParams["USER_PROPERTY_NAME"] : GetMessage("USER_TYPE_EDIT_TAB") ?>
-				 <? foreach($arResult["USER_PROPERTIES"]["DATA"] as $FIELD_NAME => $arUserField): ?>
+				 <? foreach($arResult["USER_PROPERTIES"]["DATA"] as $FIELD_NAME => $arUserField){ ?>
 					 <?= $arUserField["EDIT_FORM_LABEL"] ?>:<? if($arUserField["MANDATORY"] == "Y"): ?>
                       <span class="starrequired">*</span><? endif; ?>
 					 <? $APPLICATION->IncludeComponent(
 						 "bitrix:system.field.edit",
 						 $arUserField["USER_TYPE"]["USER_TYPE_ID"],
 						 array("bVarsFromForm" => $arResult["bVarsFromForm"], "arUserField" => $arUserField, "form_name" => "regform"), null, array("HIDE_ICONS" => "Y")); ?>
-				 <? endforeach; ?>
-			 <? endif; ?>
+				 <? }; ?>
+			 <? }; ?>
 
-           <input class="btn" type="submit" name="register_submit_button" value="<?= GetMessage("AUTH_REGISTER") ?>"/>
+           <input class="btn"
+                  type="submit"
+                  name="register_submit_button"
+                  value="<?= GetMessage("AUTH_REGISTER") ?>"/>
        </form>
-	<? endif //$arResult["SHOW_SMS_FIELD"] == true ?>
-	<? endif ?>
+	<? } //$arResult["SHOW_SMS_FIELD"] == true ?>
+	<? } ?>
 </div>

@@ -49,7 +49,9 @@ if($arResult['AUTHORIZED']){
 
     <form class="login__form" name="<?= $arResult['FORM_ID']; ?>" method="post" target="_top"
           action="<?= POST_FORM_ACTION_URI; ?>">
-        <input class="input" placeholder="<?= Loc::getMessage('MAIN_AUTH_FORM_FIELD_LOGIN'); ?>" type="text"
+        <input class="input"
+               placeholder="<?= Loc::getMessage('MAIN_AUTH_FORM_FIELD_LOGIN'); ?>"
+               type="text"
                name="<?= $arResult['FIELDS']['login']; ?>"
                value="<?= \htmlspecialcharsbx($arResult['LAST_LOGIN']); ?>">
 		 <? if($arResult['SECURE_AUTH']){ ?>
@@ -62,16 +64,21 @@ if($arResult['AUTHORIZED']){
                document.getElementById('bx_auth_secure').style.display = '';
            </script>
 		 <? } ?>
-        <input class="input" placeholder="<?= Loc::getMessage('MAIN_AUTH_FORM_FIELD_PASS'); ?>" type="password"
+        <input class="input"
+               placeholder="<?= Loc::getMessage('MAIN_AUTH_FORM_FIELD_PASS'); ?>"
+               type="password"
                name="<?= $arResult['FIELDS']['password']; ?>">
-
         <div class="inline inline_lg">
-            <input type="submit" class="btn" name="<?= $arResult['FIELDS']['action']; ?>"
+            <input type="submit"
+                   class="btn"
+                   name="<?= $arResult['FIELDS']['action']; ?>"
                    value="<?= Loc::getMessage('MAIN_AUTH_FORM_FIELD_SUBMIT'); ?>"/>
 			  <? if($arResult['STORE_PASSWORD'] == 'Y'){ ?>
                <div class="checkbox">
                    <label class="bx-filter-param-label text-muted">
-                       <input type="checkbox" id="USER_REMEMBER" name="<?= $arResult['FIELDS']['remember']; ?>"
+                       <input type="checkbox"
+                              id="USER_REMEMBER"
+                              name="<?= $arResult['FIELDS']['remember']; ?>"
                               value="Y"/>
                        <span class="bx-filter-param-text"><?= Loc::getMessage('MAIN_AUTH_FORM_FIELD_REMEMBER'); ?></span>
                    </label>
@@ -82,12 +89,16 @@ if($arResult['AUTHORIZED']){
 		 <? if($arResult['AUTH_FORGOT_PASSWORD_URL'] || $arResult['AUTH_REGISTER_URL']){ ?>
            <div class="inline inline_lg">
 				  <? if($arResult['AUTH_FORGOT_PASSWORD_URL']){ ?>
-                  <a class="link" href="<?= $arResult['AUTH_FORGOT_PASSWORD_URL']; ?>" rel="nofollow">
+                  <a class="link"
+                     href="<?= $arResult['AUTH_FORGOT_PASSWORD_URL']; ?>"
+                     rel="nofollow">
 							<?= Loc::getMessage('MAIN_AUTH_FORM_URL_FORGOT_PASSWORD'); ?>
                   </a>
 				  <? }; ?>
 				  <? if($arResult['AUTH_REGISTER_URL']){ ?>
-                  <a class="link" href="<?= $arResult['AUTH_REGISTER_URL']; ?>" rel="nofollow">
+                  <a class="link"
+                     href="<?= $arResult['AUTH_REGISTER_URL']; ?>"
+                     rel="nofollow">
 							<?= Loc::getMessage('MAIN_AUTH_FORM_URL_REGISTER_URL'); ?>
                   </a>
 				  <? }; ?>
