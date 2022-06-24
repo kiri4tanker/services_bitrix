@@ -50,7 +50,7 @@ $APPLICATION->SetTitle("Каталог");
             </div>
         </section>
     </main>
-<? $APPLICATION->IncludeComponent("bitrix:news.list", "catalog_index", array(
+<? $APPLICATION->IncludeComponent("bitrix:news", "catalog", array(
 	"ACTIVE_DATE_FORMAT" => "d.m.Y",    // Формат показа даты
 	"ADD_SECTIONS_CHAIN" => "N",    // Включать раздел в цепочку навигации
 	"AJAX_MODE" => "N",    // Включить режим AJAX
