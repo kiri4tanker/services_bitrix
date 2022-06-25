@@ -15,10 +15,10 @@ $asset->addJs(SITE_TEMPLATE_PATH . '/js/main.js');
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title><? $APPLICATION->ShowTitle(); ?></title>
 	<? $APPLICATION->ShowHead(); ?>
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="<?= SITE_TEMPLATE_PATH ?>/favicon.ico" sizes="any">
+    <link rel="icon" href="<?= SITE_TEMPLATE_PATH ?>/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="<?= SITE_TEMPLATE_PATH ?>/apple-touch-icon.png">
+    <link rel="manifest" href="<?= SITE_TEMPLATE_PATH ?>/manifest.webmanifest">
 	<? $isIndex = $APPLICATION->GetCurPage() == SITE_DIR; ?>
 </head>
 <body>
@@ -63,17 +63,23 @@ $asset->addJs(SITE_TEMPLATE_PATH . '/js/main.js');
             <div class="inline">
 					<? if(!$USER->IsAuthorized()){ ?>
                    <a href="/profile/auth/index.php" class="btn">
-                       <ion-icon name="person-outline"></ion-icon><?= Loc::getMessage('Войти') ?></a>
+                       <ion-icon name="person-outline"></ion-icon>
+                       Войти
+                   </a>
 					<? }else{ ?>
                    <a href="/profile/" class="btn">
-                       <ion-icon name="person-outline"></ion-icon><?= Loc::getMessage('Профиль') ?></a>
+                       <ion-icon name="person-outline"></ion-icon>
+                       Профиль
+                   </a>
                    <a class="btn"
                       href="<?= $APPLICATION->GetCurPageParam("logout=yes&" . bitrix_sessid_get(), array(
 								 "login",
 								 "logout",
 								 "register",
 								 "forgot_password",
-								 "change_password")); ?>"><?= Loc::getMessage('Выйти') ?></a>
+								 "change_password")); ?>">
+                       Выйти
+                   </a>
 					<? } ?>
                 <button class="btn" data-micromodal-trigger="modal-feedback">
                     <ion-icon name="build-outline"></ion-icon>
