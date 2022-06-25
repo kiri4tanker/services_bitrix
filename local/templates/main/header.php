@@ -63,14 +63,17 @@ $asset->addJs(SITE_TEMPLATE_PATH . '/js/main.js');
             <div class="inline">
 					<? if(!$USER->IsAuthorized()){ ?>
                    <a href="/profile/auth/index.php" class="btn">
-                       <ion-icon name="person-outline"></ion-icon>
-                       Войти
-                   </a>
+                       <ion-icon name="person-outline"></ion-icon><?= Loc::getMessage('Войти') ?></a>
 					<? }else{ ?>
                    <a href="/profile/" class="btn">
-                       <ion-icon name="person-outline"></ion-icon>
-                       Профиль
-                   </a>
+                       <ion-icon name="person-outline"></ion-icon><?= Loc::getMessage('Профиль') ?></a>
+                   <a class="btn"
+                      href="<?= $APPLICATION->GetCurPageParam("logout=yes&" . bitrix_sessid_get(), array(
+								 "login",
+								 "logout",
+								 "register",
+								 "forgot_password",
+								 "change_password")); ?>"><?= Loc::getMessage('Выйти') ?></a>
 					<? } ?>
                 <button class="btn" data-micromodal-trigger="modal-feedback">
                     <ion-icon name="build-outline"></ion-icon>
