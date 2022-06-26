@@ -429,13 +429,15 @@ if($arResult["SHOW_SMS_FIELD"] == true){
 
 			 <? } ?>
 			 <? if($arResult["INCLUDE_BLOG"] == "Y"){ ?>
-              <div class="profile-link profile-user-div-link"><a title="<?= GetMessage("USER_SHOW_HIDE") ?>"
-                                                                 href="javascript:void(0)"
-                                                                 onclick="SectionClick('blog')"><?= GetMessage("blog_INFO") ?></a>
+              <div class="profile-link profile-user-div-link">
+                  <a title="<?= GetMessage("USER_SHOW_HIDE") ?>"
+                     href="javascript:void(0)"
+                     onclick="SectionClick('blog')">
+                     <?= GetMessage("blog_INFO") ?>
+                  </a>
               </div>
               <div id="user_div_blog"
                    class="profile-block-<?= mb_strpos($arResult["opened"], "blog") === false ? "hidden" : "shown" ?>">
-
 					  <?= GetMessage('blog_ALIAS') ?>
                   <input class="typeinput"
                          type="text"
