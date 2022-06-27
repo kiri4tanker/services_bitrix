@@ -19,8 +19,7 @@ $APPLICATION->SetTitle("Каталог");
 									  "EDIT_TEMPLATE" => "",
 									  "PATH" => "/include/services/inc_services_title.php"
 								  )
-							  ); ?>
-							  <? $APPLICATION->IncludeComponent(
+							  ); ?> <? $APPLICATION->IncludeComponent(
 								  "bitrix:search.title",
 								  "search_index",
 								  array(
@@ -41,6 +40,8 @@ $APPLICATION->SetTitle("Каталог");
 									  "USE_LANGUAGE_GUESS" => "Y"
 								  )
 							  ); ?>
+                        <div class="filter__line">
+                        </div>
 							  <? $APPLICATION->IncludeComponent(
 								  "bitrix:catalog",
 								  "",
@@ -96,7 +97,7 @@ $APPLICATION->SetTitle("Каталог");
 									  "ELEMENT_SORT_ORDER" => "asc",
 									  "ELEMENT_SORT_ORDER2" => "desc",
 									  "FILTER_FIELD_CODE" => array("", ""),
-									  "FILTER_HIDE_ON_MOBILE" => "Y",
+									  "FILTER_HIDE_ON_MOBILE" => "N",
 									  "FILTER_NAME" => "",
 									  "FILTER_PRICE_CODE" => array(),
 									  "FILTER_PROPERTY_CODE" => array("CITY", "PRIVATE_PERSON", "ORGANISATION", "WORK_NOW", ""),
@@ -104,7 +105,7 @@ $APPLICATION->SetTitle("Каталог");
 									  "IBLOCK_ID" => "4",
 									  "IBLOCK_TYPE" => "catalog",
 									  "INCLUDE_SUBSECTIONS" => "Y",
-									  "INSTANT_RELOAD" => "Y",
+									  "INSTANT_RELOAD" => "N",
 									  "LABEL_PROP" => array("DEPARTURE", "PRIVATE_PERSON", "ORGANISATION", "WORK_NOW"),
 									  "LABEL_PROP_MOBILE" => array("DEPARTURE", "PRIVATE_PERSON", "ORGANISATION", "WORK_NOW"),
 									  "LABEL_PROP_POSITION" => "top-right",
@@ -139,7 +140,7 @@ $APPLICATION->SetTitle("Каталог");
 									  "PAGER_SHOW_ALWAYS" => "N",
 									  "PAGER_TEMPLATE" => ".default",
 									  "PAGER_TITLE" => "Товары",
-									  "PAGE_ELEMENT_COUNT" => "30",
+									  "PAGE_ELEMENT_COUNT" => "24",
 									  "PARTIAL_PRODUCT_PROPERTIES" => "N",
 									  "PRICE_CODE" => array(),
 									  "PRICE_VAT_INCLUDE" => "Y",
@@ -174,7 +175,7 @@ $APPLICATION->SetTitle("Каталог");
 									  "SIDEBAR_PATH" => "",
 									  "SIDEBAR_SECTION_SHOW" => "N",
 									  "TEMPLATE_THEME" => "",
-									  "TOP_ELEMENT_COUNT" => "9",
+									  "TOP_ELEMENT_COUNT" => "42",
 									  "TOP_ELEMENT_SORT_FIELD" => "sort",
 									  "TOP_ELEMENT_SORT_FIELD2" => "id",
 									  "TOP_ELEMENT_SORT_ORDER" => "asc",
@@ -194,31 +195,13 @@ $APPLICATION->SetTitle("Каталог");
 									  "USE_COMPARE" => "N",
 									  "USE_ELEMENT_COUNTER" => "Y",
 									  "USE_ENHANCED_ECOMMERCE" => "N",
-									  "USE_FILTER" => "Y",
-									  "USE_MAIN_ELEMENT_SECTION" => "Y",
+									  "USE_FILTER" => "N",
+									  "USE_MAIN_ELEMENT_SECTION" => "N",
 									  "USE_PRICE_COUNT" => "N",
 									  "USE_PRODUCT_QUANTITY" => "N",
 									  "USE_STORE" => "N"
 								  )
 							  ); ?>
-                        <div class="filter__line">
-                        </div>
-                        <div class="filter__catalog">
-                            <div class="list-group">
-                                <button class="list-group__item list-group__item_active">Психология</button>
-                                <button class="list-group__item">Ремонт авто</button>
-                                <button class="list-group__item">Уборка</button>
-                                <button class="list-group__item">Перевозка вещей</button>
-                                <button class="list-group__item">Тренировки</button>
-                            </div>
-                        </div>
-                        <div class="filter__content">
-                            <div class="list-group list-group_inline">
-                                <a href="#" class="list-group__item">Психолог</a> <a href="#" class="list-group__item">Психотерапевт</a>
-                                <a href="#" class="list-group__item">Психиатр</a> <a href="#" class="list-group__item">Клинический
-                                    психолог</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

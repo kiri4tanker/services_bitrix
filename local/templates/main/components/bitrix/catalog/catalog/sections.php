@@ -1,4 +1,4 @@
-<?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+<? if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 /** @var array $arParams */
 /** @var array $arResult */
@@ -13,71 +13,51 @@
 /** @var CBitrixComponent $component */
 
 $this->setFrameMode(true);
-$this->addExternalCss("/bitrix/css/main/bootstrap.css");
+?>
 
-$sectionListParams = array(
-	"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
-	"IBLOCK_ID" => $arParams["IBLOCK_ID"],
-	"CACHE_TYPE" => $arParams["CACHE_TYPE"],
-	"CACHE_TIME" => $arParams["CACHE_TIME"],
-	"CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
-	"COUNT_ELEMENTS" => $arParams["SECTION_COUNT_ELEMENTS"],
-	"TOP_DEPTH" => $arParams["SECTION_TOP_DEPTH"],
-	"SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
-	"VIEW_MODE" => $arParams["SECTIONS_VIEW_MODE"],
-	"SHOW_PARENT_NAME" => $arParams["SECTIONS_SHOW_PARENT_NAME"],
-	"HIDE_SECTION_NAME" => (isset($arParams["SECTIONS_HIDE_SECTION_NAME"]) ? $arParams["SECTIONS_HIDE_SECTION_NAME"] : "N"),
-	"ADD_SECTIONS_CHAIN" => (isset($arParams["ADD_SECTIONS_CHAIN"]) ? $arParams["ADD_SECTIONS_CHAIN"] : '')
-);
-if ($sectionListParams["COUNT_ELEMENTS"] === "Y")
-{
-	$sectionListParams["COUNT_ELEMENTS_FILTER"] = "CNT_ACTIVE";
-	if ($arParams["HIDE_NOT_AVAILABLE"] == "Y")
-	{
-		$sectionListParams["COUNT_ELEMENTS_FILTER"] = "CNT_AVAILABLE";
-	}
-}
-$APPLICATION->IncludeComponent(
-	"bitrix:catalog.section.list",
-	"",
-	$sectionListParams,
-	$component,
-	($arParams["SHOW_TOP_ELEMENTS"] !== "N" ? array("HIDE_ICONS" => "Y") : array())
-);
-unset($sectionListParams);
+    <!--    <div class="filter__content">-->
+    <!--        <div class="list-group list-group_inline">-->
+    <!--            <a href="#" class="list-group__item">Психолог</a> <a href="#" class="list-group__item">Психотерапевт</a>-->
+    <!--            <a href="#" class="list-group__item">Психиатр</a> <a href="#" class="list-group__item">Клинический-->
+    <!--                психолог</a>-->
+    <!--        </div>-->
+    <!--    </div>-->
 
-if ($arParams["USE_COMPARE"] === "Y")
-{
-	$APPLICATION->IncludeComponent(
-		"bitrix:catalog.compare.list",
-		"",
-		array(
-			"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
-			"IBLOCK_ID" => $arParams["IBLOCK_ID"],
-			"NAME" => $arParams["COMPARE_NAME"],
-			"DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["element"],
-			"COMPARE_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["compare"],
-			"ACTION_VARIABLE" => (!empty($arParams["ACTION_VARIABLE"]) ? $arParams["ACTION_VARIABLE"] : "action"),
-			"PRODUCT_ID_VARIABLE" => $arParams["PRODUCT_ID_VARIABLE"],
-			'POSITION_FIXED' => isset($arParams['COMPARE_POSITION_FIXED']) ? $arParams['COMPARE_POSITION_FIXED'] : '',
-			'POSITION' => isset($arParams['COMPARE_POSITION']) ? $arParams['COMPARE_POSITION'] : ''
-		),
-		$component,
-		array("HIDE_ICONS" => "Y")
-	);
-}
+    <div class="filter__catalog">
+		 <? $sectionListParams = array(
+			 "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
+			 "IBLOCK_ID" => $arParams["IBLOCK_ID"],
+			 "CACHE_TYPE" => $arParams["CACHE_TYPE"],
+			 "CACHE_TIME" => $arParams["CACHE_TIME"],
+			 "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
+			 "COUNT_ELEMENTS" => $arParams["SECTION_COUNT_ELEMENTS"],
+			 "TOP_DEPTH" => $arParams["SECTION_TOP_DEPTH"],
+			 "SECTION_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["section"],
+			 "VIEW_MODE" => $arParams["SECTIONS_VIEW_MODE"],
+			 "SHOW_PARENT_NAME" => $arParams["SECTIONS_SHOW_PARENT_NAME"],
+			 "HIDE_SECTION_NAME" => (isset($arParams["SECTIONS_HIDE_SECTION_NAME"]) ? $arParams["SECTIONS_HIDE_SECTION_NAME"] : "N"),
+			 "ADD_SECTIONS_CHAIN" => (isset($arParams["ADD_SECTIONS_CHAIN"]) ? $arParams["ADD_SECTIONS_CHAIN"] : '')
+		 );
 
-if ($arParams["SHOW_TOP_ELEMENTS"] !== "N")
-{
-	if (isset($arParams['USE_COMMON_SETTINGS_BASKET_POPUP']) && $arParams['USE_COMMON_SETTINGS_BASKET_POPUP'] === 'Y')
-	{
-		$basketAction = isset($arParams['COMMON_ADD_TO_BASKET_ACTION']) ? $arParams['COMMON_ADD_TO_BASKET_ACTION'] : '';
-	}
-	else
-	{
-		$basketAction = isset($arParams['TOP_ADD_TO_BASKET_ACTION']) ? $arParams['TOP_ADD_TO_BASKET_ACTION'] : '';
-	}
+		 if($sectionListParams["COUNT_ELEMENTS"] === "Y"){
+			 $sectionListParams["COUNT_ELEMENTS_FILTER"] = "CNT_ACTIVE";
+			 if($arParams["HIDE_NOT_AVAILABLE"] == "Y"){
+				 $sectionListParams["COUNT_ELEMENTS_FILTER"] = "CNT_AVAILABLE";
+			 }
+		 }
 
+		 $APPLICATION->IncludeComponent(
+			 "bitrix:catalog.section.list",
+			 "",
+			 $sectionListParams,
+			 $component,
+			 ($arParams["SHOW_TOP_ELEMENTS"] !== "N" ? array("HIDE_ICONS" => "Y") : array())
+		 );
+		 unset($sectionListParams);
+		 ?>
+    </div>
+
+<? if($arParams["SHOW_TOP_ELEMENTS"] !== "N"){
 	$APPLICATION->IncludeComponent(
 		"bitrix:catalog.top",
 		"",
@@ -88,8 +68,8 @@ if ($arParams["SHOW_TOP_ELEMENTS"] !== "N")
 			"ELEMENT_SORT_ORDER" => $arParams["TOP_ELEMENT_SORT_ORDER"],
 			"ELEMENT_SORT_FIELD2" => $arParams["TOP_ELEMENT_SORT_FIELD2"],
 			"ELEMENT_SORT_ORDER2" => $arParams["TOP_ELEMENT_SORT_ORDER2"],
-			"SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
-			"DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["element"],
+			"SECTION_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["section"],
+			"DETAIL_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["element"],
 			"BASKET_URL" => $arParams["BASKET_URL"],
 			"ACTION_VARIABLE" => $arParams["ACTION_VARIABLE"],
 			"PRODUCT_ID_VARIABLE" => $arParams["PRODUCT_ID_VARIABLE"],
@@ -153,12 +133,12 @@ if ($arParams["SHOW_TOP_ELEMENTS"] !== "N")
 			'MESS_NOT_AVAILABLE' => $arParams['~MESS_NOT_AVAILABLE'],
 			'ADD_TO_BASKET_ACTION' => $basketAction,
 			'SHOW_CLOSE_POPUP' => isset($arParams['COMMON_SHOW_CLOSE_POPUP']) ? $arParams['COMMON_SHOW_CLOSE_POPUP'] : '',
-			'COMPARE_PATH' => $arResult['FOLDER'].$arResult['URL_TEMPLATES']['compare'],
+			'COMPARE_PATH' => $arResult['FOLDER'] . $arResult['URL_TEMPLATES']['compare'],
 			'USE_COMPARE_LIST' => 'Y',
 
 			'COMPATIBLE_MODE' => (isset($arParams['COMPATIBLE_MODE']) ? $arParams['COMPATIBLE_MODE'] : '')
 		),
 		$component
 	);
-	unset($basketAction);
 }
+?>

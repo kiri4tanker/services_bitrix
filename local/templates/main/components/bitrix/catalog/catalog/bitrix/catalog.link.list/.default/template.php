@@ -11,7 +11,9 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-?><?
+?>
+
+<?
 $APPLICATION->IncludeComponent(
 	"bitrix:catalog.section",
 	"",
