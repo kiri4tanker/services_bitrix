@@ -44,7 +44,7 @@ $APPLICATION->SetTitle("Каталог");
                         </div>
 							  <? $APPLICATION->IncludeComponent(
 								  "bitrix:catalog",
-								  "",
+								  "catalog",
 								  array(
 									  "ACTION_VARIABLE" => "action",
 									  "ADD_ELEMENT_CHAIN" => "Y",
@@ -202,6 +202,7 @@ $APPLICATION->SetTitle("Каталог");
 									  "USE_STORE" => "N"
 								  )
 							  ); ?>
+
                     </div>
                 </div>
             </div>

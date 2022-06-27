@@ -16,7 +16,6 @@ use Bitrix\Main\Loader;
 use Bitrix\Main\ModuleManager;
 
 $this->setFrameMode(true);
-$this->addExternalCss("/bitrix/css/main/bootstrap.css");
 ?>
 
 <? if(!isset($arParams['FILTER_VIEW_MODE']) || (string)$arParams['FILTER_VIEW_MODE'] == ''){
@@ -25,6 +24,33 @@ $this->addExternalCss("/bitrix/css/main/bootstrap.css");
 $arParams['USE_FILTER'] = (isset($arParams['USE_FILTER']) && $arParams['USE_FILTER'] == 'Y' ? 'Y' : 'N');
 $isVerticalFilter = ('Y' == $arParams['USE_FILTER'] && $arParams["FILTER_VIEW_MODE"] == "VERTICAL");
 $isFilter = ($arParams['USE_FILTER'] == 'Y');
+?>
+
+<?
+$sectionListParams = array(
+	"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
+	"IBLOCK_ID" => $arParams["IBLOCK_ID"],
+	"CACHE_TYPE" => $arParams["CACHE_TYPE"],
+	"CACHE_TIME" => $arParams["CACHE_TIME"],
+	"CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
+	"COUNT_ELEMENTS" => $arParams["SECTION_COUNT_ELEMENTS"],
+	"TOP_DEPTH" => $arParams["SECTION_TOP_DEPTH"],
+	"SECTION_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["section"],
+	"VIEW_MODE" => $arParams["SECTIONS_VIEW_MODE"],
+	"SHOW_PARENT_NAME" => $arParams["SECTIONS_SHOW_PARENT_NAME"],
+	"HIDE_SECTION_NAME" => (isset($arParams["SECTIONS_HIDE_SECTION_NAME"]) ? $arParams["SECTIONS_HIDE_SECTION_NAME"] : "N"),
+	"ADD_SECTIONS_CHAIN" => (isset($arParams["ADD_SECTIONS_CHAIN"]) ? $arParams["ADD_SECTIONS_CHAIN"] : '')
+);
+
+$APPLICATION->IncludeComponent(
+	"bitrix:catalog.section.list",
+	"catalog_list_top",
+	$sectionListParams,
+	$component,
+	($arParams["SHOW_TOP_ELEMENTS"] !== "N" ? array("HIDE_ICONS" => "Y") : array())
+);
+
+unset($sectionListParams);
 ?>
 
 <? if($isFilter){
