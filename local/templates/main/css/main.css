@@ -1113,6 +1113,7 @@ ion-icon {
    margin-top: 50px;
    display: flex;
    align-items: center;
+    flex-wrap: wrap;
 }
 .breadcrumbs__link {
    color: var(--text-color);
