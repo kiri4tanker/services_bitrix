@@ -24,15 +24,13 @@ $arSectionDeleteParams = array("CONFIRM" => GetMessage('CT_BCSL_ELEMENT_DELETE_C
 	$this->AddDeleteAction($arResult['SECTION']['ID'], $arResult['SECTION']['DELETE_LINK'], $strSectionDelete, $arSectionDeleteParams);
 }
 if(0 < $arResult["SECTIONS_COUNT"]){ ?>
-    <div class="list-group">
-		 <? foreach($arResult['SECTIONS'] as &$arSection){ ?>
-           <a id="<?= $this->GetEditAreaId($arSection['ID']); ?>"
-              class="list-group__item"
-              href="<?= $arSection["SECTION_PAGE_URL"]; ?>"><?= $arSection["NAME"]; ?>
-				  <? if($arParams["COUNT_ELEMENTS"] && $arSection['ELEMENT_CNT'] !== null){?>
-					  <?= $arSection["ELEMENT_CNT"]; ?>
-				  <? } ?>
-           </a>
-		 <? } ?>
-    </div>
+	<? foreach($arResult['SECTIONS'] as &$arSection){ ?>
+        <a id="<?= $this->GetEditAreaId($arSection['ID']); ?>"
+           class="list-group__item"
+           href="<?= $arSection["SECTION_PAGE_URL"]; ?>"><?= $arSection["NAME"]; ?>
+			  <? if($arParams["COUNT_ELEMENTS"] && $arSection['RELATIVE_DEPTH_LEVEL'] !== null){ ?>
+				  <?= $arSection["RELATIVE_DEPTH_LEVEL"]; ?>
+			  <? } ?>
+        </a>
+	<? } ?>
 <? } ?>

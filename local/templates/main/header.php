@@ -81,9 +81,6 @@ $asset->addJs(SITE_TEMPLATE_PATH . '/js/main.js');
                        Выйти
                    </a>
 					<? } ?>
-                <button class="btn" data-micromodal-trigger="modal-feedback">
-                    <ion-icon name="build-outline"></ion-icon>
-                </button>
             </div>
         </div>
         <div class="header__bottom">
