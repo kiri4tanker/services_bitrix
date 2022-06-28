@@ -33,13 +33,6 @@ $this->setFrameMode(true);
 			 "ADD_SECTIONS_CHAIN" => (isset($arParams["ADD_SECTIONS_CHAIN"]) ? $arParams["ADD_SECTIONS_CHAIN"] : '')
 		 );
 
-		 if($sectionListParams["COUNT_ELEMENTS"] === "Y"){
-			 $sectionListParams["COUNT_ELEMENTS_FILTER"] = "CNT_ACTIVE";
-			 if($arParams["HIDE_NOT_AVAILABLE"] == "Y"){
-				 $sectionListParams["COUNT_ELEMENTS_FILTER"] = "CNT_AVAILABLE";
-			 }
-		 }
-
 		 $APPLICATION->IncludeComponent(
 			 "bitrix:catalog.section.list",
 			 "catalog_list",
