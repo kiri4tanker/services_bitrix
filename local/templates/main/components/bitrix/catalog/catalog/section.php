@@ -83,7 +83,7 @@ $this->setFrameMode(true);
 <div class="orders">
 	<? $APPLICATION->IncludeComponent(
 		'bitrix:catalog.section',
-		'catalog_items',
+		'section',
 		array(
 			'IBLOCK_TYPE' => $arParams['IBLOCK_TYPE'],
 			'IBLOCK_ID' => $arParams['IBLOCK_ID'],
